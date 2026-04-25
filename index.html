@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高爾夫規則速查</title>
+    <title>高爾夫規則速查 / Golf Rules</title>
     <meta name="description" content="點選情境快速查詢高爾夫規則與罰則，依據 R&A/USGA 2023 現行規則">
     <meta name="theme-color" content="#1a5c2a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,23 +21,39 @@
         .header {
             background: #1a5c2a;
             color: white;
-            padding: 16px 20px;
+            padding: 14px 16px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
-        .header-logo { font-size: 2.2rem; }
-        .header h1 { font-size: 1.15rem; font-weight: 700; }
-        .header .subtitle { font-size: 0.72rem; opacity: 0.75; margin-top: 2px; }
+        .header-logo { font-size: 2rem; flex-shrink: 0; }
+        .header-text { flex: 1; min-width: 0; }
+        .header h1 { font-size: 1.05rem; font-weight: 700; }
+        .header .subtitle { font-size: 0.68rem; opacity: 0.72; margin-top: 2px; }
+        .lang-btn {
+            background: rgba(255,255,255,0.18);
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            border-radius: 20px;
+            padding: 5px 13px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.3); }
+        .lang-btn:active { background: rgba(255,255,255,0.4); }
         .breadcrumb {
-            padding: 10px 20px;
+            padding: 9px 16px;
             background: white;
             border-bottom: 1px solid #ddd;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
+            gap: 5px;
+            font-size: 0.8rem;
             color: #666;
             overflow-x: auto;
             white-space: nowrap;
@@ -50,22 +66,22 @@
             padding: 20px 16px 40px;
         }
         .question-title {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #1a2e1a;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             line-height: 1.4;
         }
-        .options-grid { display: flex; flex-direction: column; gap: 11px; }
+        .options-grid { display: flex; flex-direction: column; gap: 10px; }
         .option-card {
             background: white;
             border: 2px solid #deeede;
             border-radius: 12px;
-            padding: 15px 18px;
+            padding: 14px 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 13px;
             transition: all 0.15s;
         }
         .option-card:hover {
@@ -75,71 +91,68 @@
             box-shadow: 0 4px 14px rgba(26,92,42,0.12);
         }
         .option-card:active { transform: translateY(0); }
-        .opt-icon { font-size: 1.9rem; flex-shrink: 0; }
-        .opt-text h3 { font-size: 0.97rem; font-weight: 600; color: #1a2e1a; }
-        .opt-text p { font-size: 0.78rem; color: #777; margin-top: 2px; }
+        .opt-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .opt-text h3 { font-size: 0.94rem; font-weight: 600; color: #1a2e1a; }
+        .opt-text p { font-size: 0.76rem; color: #777; margin-top: 2px; line-height: 1.4; }
         .opt-arrow { margin-left: auto; color: #bbb; font-size: 1.3rem; flex-shrink: 0; }
-        /* Result */
         .result-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .result-header { background: #1a5c2a; color: white; padding: 20px; }
+        .result-header { background: #1a5c2a; color: white; padding: 18px 20px; }
         .rule-badge {
             background: rgba(255,255,255,0.18);
             display: inline-block;
-            padding: 3px 12px;
+            padding: 3px 11px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             letter-spacing: 0.04em;
-            margin-bottom: 9px;
+            margin-bottom: 8px;
         }
-        .result-header h2 { font-size: 1.2rem; font-weight: 700; line-height: 1.35; }
+        .result-header h2 { font-size: 1.1rem; font-weight: 700; line-height: 1.35; }
         .penalty-badge {
             display: inline-block;
             background: #e53935;
             color: white;
-            padding: 7px 18px;
+            padding: 6px 16px;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin-top: 12px;
+            margin-top: 11px;
         }
-        .penalty-free {
-            background: #388e3c;
-        }
-        .result-body { padding: 20px; }
-        .summary-text { font-size: 0.93rem; line-height: 1.65; color: #333; margin-bottom: 18px; }
+        .penalty-free { background: #388e3c; }
+        .result-body { padding: 18px 20px; }
+        .summary-text { font-size: 0.91rem; line-height: 1.65; color: #333; margin-bottom: 16px; }
         .stroke-box {
             background: linear-gradient(135deg, #1b5e20, #2e7d32);
             border-radius: 12px;
-            padding: 16px;
+            padding: 14px 16px;
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
-        .stroke-box-title { font-size: 0.8rem; opacity: 0.88; margin-bottom: 10px; font-weight: 600; }
+        .stroke-box-title { font-size: 0.78rem; opacity: 0.88; margin-bottom: 9px; font-weight: 600; }
         .stroke-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 5px 0;
             border-bottom: 1px solid rgba(255,255,255,0.18);
-            font-size: 0.88rem;
+            font-size: 0.86rem;
         }
         .stroke-row:last-child { border-bottom: none; }
-        .stroke-val { font-weight: 700; font-size: 1.05rem; }
+        .stroke-val { font-weight: 700; font-size: 1rem; }
         .section-label {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #1a5c2a;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 10px;
+            letter-spacing: 0.07em;
+            margin-bottom: 9px;
         }
-        .steps { counter-reset: step-counter; list-style: none; margin-bottom: 18px; }
+        .steps { counter-reset: step-counter; list-style: none; margin-bottom: 16px; }
         .steps li {
             counter-increment: step-counter;
             display: flex;
-            gap: 11px;
-            margin-bottom: 11px;
-            font-size: 0.9rem;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
             line-height: 1.55;
             color: #333;
         }
@@ -147,13 +160,13 @@
             content: counter(step-counter);
             background: #1a5c2a;
             color: white;
-            min-width: 22px;
-            height: 22px;
+            min-width: 21px;
+            height: 21px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 700;
             flex-shrink: 0;
             margin-top: 2px;
@@ -162,33 +175,33 @@
             background: #fff8e1;
             border: 1px solid #ffc107;
             border-radius: 8px;
-            padding: 11px 14px;
-            font-size: 0.84rem;
+            padding: 10px 13px;
+            font-size: 0.83rem;
             color: #6d4c00;
             display: flex;
             gap: 8px;
-            margin-bottom: 14px;
+            margin-bottom: 13px;
             line-height: 1.5;
         }
         .local-rule-box {
             background: #e3f2fd;
             border: 1px solid #90caf9;
             border-radius: 8px;
-            padding: 13px 15px;
-            font-size: 0.85rem;
+            padding: 12px 14px;
+            font-size: 0.83rem;
             color: #0d47a1;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             line-height: 1.5;
         }
-        .local-rule-box strong { display: block; margin-bottom: 5px; font-size: 0.88rem; }
-        .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+        .local-rule-box strong { display: block; margin-bottom: 4px; font-size: 0.86rem; }
+        .btn-row { display: flex; gap: 10px; margin-top: 18px; }
         .btn {
             flex: 1;
-            padding: 13px;
+            padding: 12px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
             transition: opacity 0.15s;
         }
@@ -202,13 +215,13 @@
             color: #1a5c2a;
             cursor: pointer;
             font-weight: 600;
-            padding: 10px 0 16px;
-            font-size: 0.9rem;
+            padding: 10px 0 14px;
+            font-size: 0.88rem;
         }
         .back-btn:hover { opacity: 0.75; }
         @media (max-width: 400px) {
-            .question-title { font-size: 1.1rem; }
-            .opt-icon { font-size: 1.6rem; }
+            .question-title { font-size: 1.05rem; }
+            .opt-icon { font-size: 1.55rem; }
         }
     </style>
 </head>
@@ -216,394 +229,551 @@
 
 <div class="header">
     <div class="header-logo">⛳</div>
-    <div>
-        <h1>高爾夫規則速查</h1>
-        <div class="subtitle">依據 R&amp;A / USGA 2023 現行規則</div>
+    <div class="header-text">
+        <h1 id="hd-title">高爾夫規則速查</h1>
+        <div class="subtitle" id="hd-sub">依據 R&amp;A / USGA 2023 現行規則</div>
     </div>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">EN</button>
 </div>
 
 <div class="breadcrumb" id="breadcrumb"></div>
-
 <div class="main" id="app"></div>
 
 <script>
 // ─────────────────────────────────────────────
-// 情境資料庫（JSON 樹狀結構）
+// 語言設定
+// ─────────────────────────────────────────────
+let lang = localStorage.getItem('golf-lang') || 'zh';
+
+function t(v) {
+  if (v && typeof v === 'object' && ('zh' in v || 'en' in v)) return v[lang] ?? v.zh;
+  return v;
+}
+
+const UI = {
+  title:     { zh: '高爾夫規則速查',            en: 'Golf Rules' },
+  subtitle:  { zh: '依據 R&A / USGA 2023 現行規則', en: 'Based on R&A / USGA Rules of Golf 2023' },
+  home:      { zh: '首頁', en: 'Home' },
+  back:      { zh: '← 返回上一步', en: '← Back' },
+  backShort: { zh: '← 返回',       en: '← Back' },
+  homeBtn:   { zh: '🏠 查詢其他規則', en: '🏠 Other Rules' },
+  steps:     { zh: '處理步驟', en: 'Procedure' },
+};
+
+function toggleLang() {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('golf-lang', lang);
+  document.getElementById('lang-btn').textContent = lang === 'zh' ? 'EN' : '中文';
+  document.getElementById('hd-title').textContent = t(UI.title);
+  document.getElementById('hd-sub').innerHTML = t(UI.subtitle);
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+  render();
+}
+
+function applyLangUI() {
+  document.getElementById('lang-btn').textContent = lang === 'zh' ? 'EN' : '中文';
+  document.getElementById('hd-title').textContent = t(UI.title);
+  document.getElementById('hd-sub').innerHTML = t(UI.subtitle);
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+}
+
+// ─────────────────────────────────────────────
+// 情境資料庫（雙語）
 // ─────────────────────────────────────────────
 const TREE = {
 
   home: {
     type: 'question',
-    title: '發生什麼狀況？',
+    title: { zh: '發生什麼狀況？', en: 'What happened on the course?' },
     options: [
-      { id:'ob_lost',      label:'球出界 / 球找不到',   desc:'白線外、OB 樁外，或超過 3 分鐘找不到',  icon:'🚫' },
-      { id:'penalty_area', label:'球進入水域',           desc:'進入紅樁或黃樁標示的水域懲罰區',         icon:'💧' },
-      { id:'bunker',       label:'球在沙坑',             desc:'沙坑內各種情況',                          icon:'🏖️' },
-      { id:'unplayable',   label:'無法打擊（Unplayable）', desc:'球卡在樹叢、石縫、斜坡等難以揮桿',     icon:'🌿' },
-      { id:'obstruction',  label:'障礙物干擾',           desc:'固定設施、排水溝蓋、GUR 修繕區等',       icon:'🚧' },
-      { id:'wrong_green',  label:'球在錯誤果嶺',         desc:'球停在非比賽洞的果嶺上',                  icon:'🟢' },
-      { id:'wrong_ball',   label:'打到別人的球',         desc:'不小心用別人的球擊打',                    icon:'⚠️' },
+      { id:'ob_lost',
+        label: { zh:'球出界 / 球找不到',    en:'Ball OB / Lost Ball' },
+        desc:  { zh:'白線外、OB 樁外，或超過 3 分鐘找不到', en:'Beyond white stakes/lines, or not found within 3 min' },
+        icon:'🚫' },
+      { id:'penalty_area',
+        label: { zh:'球進入水域',            en:'Ball in Penalty Area (Water)' },
+        desc:  { zh:'進入紅樁或黃樁標示的水域懲罰區', en:'Ball entered red or yellow stake area' },
+        icon:'💧' },
+      { id:'bunker',
+        label: { zh:'球在沙坑',              en:'Ball in Bunker' },
+        desc:  { zh:'沙坑內各種情況',        en:'Various situations inside a bunker' },
+        icon:'🏖️' },
+      { id:'unplayable',
+        label: { zh:'無法打擊（Unplayable）', en:'Unplayable Lie' },
+        desc:  { zh:'球卡在樹叢、石縫、斜坡等難以揮桿', en:'Ball in tree roots, rocks, steep slope' },
+        icon:'🌿' },
+      { id:'obstruction',
+        label: { zh:'障礙物干擾',            en:'Obstruction Interference' },
+        desc:  { zh:'固定設施、排水溝蓋、GUR 修繕區等', en:'Fixed structures, drain covers, GUR areas' },
+        icon:'🚧' },
+      { id:'wrong_green',
+        label: { zh:'球在錯誤果嶺',          en:'Ball on Wrong Green' },
+        desc:  { zh:'球停在非比賽洞的果嶺上', en:'Ball resting on a putting green other than the hole being played' },
+        icon:'🟢' },
+      { id:'wrong_ball',
+        label: { zh:'打到別人的球',           en:'Played a Wrong Ball' },
+        desc:  { zh:'不小心用別人的球擊打',   en:'Accidentally struck another player\'s ball' },
+        icon:'⚠️' },
     ]
   },
 
   // ── OB / 找不到 ───────────────────────────────
   ob_lost: {
     type: 'question',
-    title: '球的狀況是？',
+    title: { zh:'球的狀況是？', en:'What is the ball\'s situation?' },
     options: [
-      { id:'ob_confirmed', label:'確定出界（OB）',       desc:'越過白線或白樁外側',          icon:'🚫' },
-      { id:'ob_uncertain', label:'可能出界，不確定',     desc:'看到飛出去但不確定落點',       icon:'🔍' },
-      { id:'lost_not_ob',  label:'球找不到（非 OB 區）', desc:'在球道、長草區找超過 3 分鐘',  icon:'🌾' },
+      { id:'ob_confirmed',
+        label: { zh:'確定出界（OB）',          en:'Ball Confirmed Out of Bounds' },
+        desc:  { zh:'越過白線或白樁外側',       en:'Ball lies entirely beyond the white stakes or line' },
+        icon:'🚫' },
+      { id:'ob_uncertain',
+        label: { zh:'可能出界，不確定',         en:'Ball Possibly OB (Uncertain)' },
+        desc:  { zh:'看到飛出去但不確定落點',   en:'Saw it fly but unsure of exact position' },
+        icon:'🔍' },
+      { id:'lost_not_ob',
+        label: { zh:'球找不到（非 OB 區）',     en:'Ball Lost (Not in OB Area)' },
+        desc:  { zh:'在球道、長草區找超過 3 分鐘', en:'Searched fairway/rough for more than 3 minutes' },
+        icon:'🌾' },
     ]
   },
 
   ob_confirmed: {
     type: 'question',
-    title: '從哪裡打出界的？',
+    title: { zh:'從哪裡打出界的？', en:'Where did the ball go out of bounds?' },
     options: [
-      { id:'ob_tee',      label:'從發球台打出界', desc:'第一桿從 Tee 台打出界', icon:'🏌️' },
-      { id:'ob_fairway',  label:'從球道或其他位置打出界', desc:'第二桿以後打出界', icon:'⛳' },
+      { id:'ob_tee',
+        label: { zh:'從發球台打出界',           en:'OB from Teeing Area' },
+        desc:  { zh:'第一桿從 Tee 台打出界',     en:'First stroke played from the tee' },
+        icon:'🏌️' },
+      { id:'ob_fairway',
+        label: { zh:'從球道或其他位置打出界',    en:'OB from Fairway / Other Position' },
+        desc:  { zh:'第二桿以後打出界',          en:'Second stroke or later' },
+        icon:'⛳' },
     ]
   },
 
   ob_uncertain: {
     type: 'question',
-    title: '你有沒有打暫定球（Provisional）？',
+    title: { zh:'你有沒有打暫定球（Provisional）？', en:'Did you play a Provisional Ball?' },
     options: [
-      { id:'provisional_yes', label:'有打暫定球', desc:'已向同組球友宣告，並打了第二顆球', icon:'✅' },
-      { id:'provisional_no',  label:'沒有打暫定球', desc:'沒宣告，直接往前走', icon:'❌' },
+      { id:'provisional_yes',
+        label: { zh:'有打暫定球',               en:'Yes, played a Provisional Ball' },
+        desc:  { zh:'已向同組球友宣告，並打了第二顆球', en:'Announced and played a second ball before searching' },
+        icon:'✅' },
+      { id:'provisional_no',
+        label: { zh:'沒有打暫定球',             en:'No Provisional Ball Played' },
+        desc:  { zh:'沒宣告，直接往前走',        en:'Did not announce, walked forward' },
+        icon:'❌' },
     ]
   },
 
   ob_tee: {
     type: 'result',
-    title: '發球台打出界（OB）',
-    ruleNo: '規則 18.2',
-    penalty: '罰 1 桿，回發球台重打',
+    title:     { zh:'發球台打出界（OB）',       en:'OB from Teeing Area' },
+    ruleNo:    'Rule 18.2',
+    penalty:   { zh:'罰 1 桿，回發球台重打',    en:'1 Stroke Penalty – Return to Teeing Area' },
     penaltyFree: false,
-    summary: '出界採「一桿距離罰則」（Stroke and Distance）。從發球台出界，回到發球台區域打第 3 桿。',
+    summary:   { zh:'出界採「一桿距離罰則」（Stroke and Distance）。從發球台出界，回到發球台區域打第 3 桿。',
+                 en:'OB is handled under Stroke and Distance. Return to the teeing area and play your 3rd stroke.' },
     strokeCalc: {
-      title: '桿數怎麼算？（Par 4 為例）',
+      title: { zh:'桿數怎麼算？（Par 4 為例）', en:'How to count strokes? (Par 4 example)' },
       rows: [
-        { label: '第 1 桿（發球，出界）', val: '1 桿' },
-        { label: '罰桿', val: '+1' },
-        { label: '回發球台重打', val: '⬆ 打第 3 桿' },
+        { label: { zh:'第 1 桿（發球，出界）',  en:'1st stroke (tee shot, OB)' },    val: { zh:'1 桿',  en:'1 stroke' } },
+        { label: { zh:'罰桿',                   en:'Penalty stroke' },                val: { zh:'+1',    en:'+1' } },
+        { label: { zh:'回發球台重打',            en:'Return to tee, replay' },         val: { zh:'⬆ 打第 3 桿', en:'⬆ Playing 3rd stroke' } },
       ]
     },
     steps: [
-      '確認球在 OB 白線外側（整顆球都出界才算）',
-      '回到發球台區域',
-      '可在發球台任意位置放球座重新開球',
-      '這一桿計為第 3 桿',
+      { zh:'確認球在 OB 白線外側（整顆球都出界才算）',   en:'Confirm the ball lies entirely beyond the boundary (the entire ball must be OB)' },
+      { zh:'回到發球台區域',                             en:'Return to the teeing area' },
+      { zh:'可在發球台任意位置放球座重新開球',           en:'Tee the ball anywhere within the teeing area' },
+      { zh:'這一桿計為第 3 桿',                          en:'This stroke counts as your 3rd' },
     ],
-    warning: '若有事先打暫定球，暫定球即自動成為比賽球（同樣打第 3 桿），不需另行宣告。',
+    warning: { zh:'若有事先打暫定球，暫定球即自動成為比賽球（同樣打第 3 桿），不需另行宣告。',
+               en:'If you played a provisional ball, it automatically becomes the ball in play (also your 3rd stroke). No further announcement needed.' },
     localRule: {
-      title: '本地規則 E-5（若球場有適用）',
-      desc: '可不走回發球台，在球道上從出界點兩桿距離內丟球，但罰 2 桿（打第 4 桿）。請先向球場工作人員確認是否適用。'
+      title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
+      desc:  { zh:'可不走回發球台，在球道上從出界點兩桿距離內丟球，但罰 2 桿（打第 4 桿）。請先向球場工作人員確認是否適用。',
+               en:'You may drop in the fairway within 2 club-lengths of where the ball crossed the boundary, with a 2-stroke penalty (playing 4th). Confirm with the club before use.' }
     }
   },
 
   ob_fairway: {
     type: 'result',
-    title: '球道 / 其他位置打出界（OB）',
-    ruleNo: '規則 18.2',
-    penalty: '罰 1 桿，回原位重打',
+    title:     { zh:'球道 / 其他位置打出界（OB）',     en:'OB from Fairway / Other Position' },
+    ruleNo:    'Rule 18.2',
+    penalty:   { zh:'罰 1 桿，回原位重打',              en:'1 Stroke Penalty – Return to Previous Spot' },
     penaltyFree: false,
-    summary: '出界採「一桿距離罰則」。第 N 桿打出界，需回到第 N 桿的擊球位置，打第 N+2 桿。',
+    summary:   { zh:'出界採「一桿距離罰則」。第 N 桿打出界，需回到第 N 桿的擊球位置，打第 N+2 桿。',
+                 en:'Stroke and Distance applies. If your Nth stroke went OB, return to that spot and play your (N+2)th stroke.' },
     strokeCalc: {
-      title: '桿數怎麼算？（以第 2 桿出界為例）',
+      title: { zh:'桿數怎麼算？（以第 2 桿出界為例）', en:'How to count strokes? (2nd stroke OB example)' },
       rows: [
-        { label: '第 1 桿（發球，落點 OK）', val: '1 桿' },
-        { label: '第 2 桿（打出界）', val: '2 桿' },
-        { label: '罰桿', val: '+1' },
-        { label: '回第 2 桿位置重打', val: '⬆ 打第 4 桿' },
+        { label: { zh:'第 1 桿（發球，落點 OK）', en:'1st stroke (tee, good)' },    val: { zh:'1 桿', en:'1 stroke' } },
+        { label: { zh:'第 2 桿（打出界）',         en:'2nd stroke (OB)' },           val: { zh:'2 桿', en:'2 strokes' } },
+        { label: { zh:'罰桿',                      en:'Penalty stroke' },             val: { zh:'+1',   en:'+1' } },
+        { label: { zh:'回第 2 桿位置重打',          en:'Return to 2nd stroke spot' }, val: { zh:'⬆ 打第 4 桿', en:'⬆ Playing 4th stroke' } },
       ]
     },
     steps: [
-      '確認球在 OB 白線外側',
-      '回到上一桿的擊球位置',
-      '在距原擊球點一桿距離內（不更靠近球洞）丟球',
-      '重新打，計桿為原來桿數 +2',
+      { zh:'確認球在 OB 白線外側',                              en:'Confirm the ball is out of bounds' },
+      { zh:'回到上一桿的擊球位置',                              en:'Return to where the previous stroke was played' },
+      { zh:'在距原擊球點一桿距離內（不更靠近球洞）丟球',        en:'Drop within 1 club-length of the original spot (no closer to the hole)' },
+      { zh:'重新打，計桿為原來桿數 +2',                         en:'Play the ball; count = original stroke number +2' },
     ],
-    warning: '若不確定原位在哪裡，以最接近原始擊球點的合理位置為準，同組球友可協助確認。',
+    warning: { zh:'若不確定原位在哪裡，以最接近原始擊球點的合理位置為準，同組球友可協助確認。',
+               en:'If uncertain of the exact original spot, use the nearest reasonable point. Fellow-competitors may assist in confirming.' },
     localRule: {
-      title: '本地規則 E-5（若球場有適用）',
-      desc: '可在球道上、從球飛越邊界點旁兩桿距離內丟球，罰 2 桿。比走回去省時許多。'
+      title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
+      desc:  { zh:'可在球道上、從球飛越邊界點旁兩桿距離內丟球，罰 2 桿。比走回去省時許多。',
+               en:'Drop in the fairway within 2 club-lengths of where ball crossed the boundary, 2-stroke penalty. Much more time-efficient than returning.' }
     }
   },
 
   provisional_yes: {
     type: 'result',
-    title: '可能出界 → 有打暫定球',
-    ruleNo: '規則 18.3',
-    penalty: '視情況定（最多罰 1 桿）',
+    title:     { zh:'可能出界 → 有打暫定球',            en:'Possibly OB → Provisional Ball Played' },
+    ruleNo:    'Rule 18.3',
+    penalty:   { zh:'視情況定（最多罰 1 桿）',           en:'Depends (max 1-stroke penalty)' },
     penaltyFree: false,
-    summary: '打暫定球是最聰明的選擇！讓球局順暢，不用等走回去重打。',
+    summary:   { zh:'打暫定球是最聰明的選擇！讓球局順暢，不用等走回去重打。',
+                 en:'Playing a provisional ball is the smartest move! It keeps the game moving without a long walk back.' },
     strokeCalc: {
-      title: '桿數怎麼算？（以發球台第 1 桿為例）',
+      title: { zh:'桿數怎麼算？（以發球台第 1 桿為例）', en:'How to count strokes? (1st stroke from tee)' },
       rows: [
-        { label: '第 1 桿（懷疑出界）', val: '1 桿' },
-        { label: '宣告暫定球（計第 2 桿 +罰1）', val: '第 2 桿打' },
-        { label: '原球確認出界，暫定球生效', val: '⬆ 繼續打第 4 桿' },
+        { label: { zh:'第 1 桿（懷疑出界）',              en:'1st stroke (suspected OB)' },          val: { zh:'1 桿', en:'1 stroke' } },
+        { label: { zh:'宣告打暫定球（第 2 桿 + 罰 1）',   en:'Provisional ball (2nd stroke + pen)' }, val: { zh:'第 2 桿打', en:'Plays as 3rd' } },
+        { label: { zh:'原球確認出界，暫定球生效',           en:'OB confirmed, provisional in play' },   val: { zh:'⬆ 繼續打第 4 桿', en:'⬆ Continue playing 4th' } },
       ]
     },
     steps: [
-      '前往球可能的落點搜尋原球（從開始搜尋起 3 分鐘）',
-      '找到原球且在界內 → 必須改用原球，暫定球作廢',
-      '原球確認出界或 3 分鐘找不到 → 暫定球成為比賽球，罰 1 桿',
-      '用暫定球繼續打完這個洞',
+      { zh:'前往球可能的落點搜尋原球（從開始搜尋起 3 分鐘）',      en:'Go search for the original ball (3-minute limit from when search begins)' },
+      { zh:'找到原球且在界內 → 必須改用原球，暫定球作廢',           en:'Original ball found in bounds → must play original ball; provisional is abandoned' },
+      { zh:'原球確認出界或 3 分鐘找不到 → 暫定球成為比賽球，罰 1 桿', en:'OB confirmed or not found → provisional becomes ball in play, 1-stroke penalty added' },
+      { zh:'用暫定球繼續打完這個洞',                                en:'Continue play with the provisional ball for the remainder of the hole' },
     ],
-    warning: '注意：若你走到原球預計落點的前方，且暫定球打的位置比原球更靠近球洞，原球自動視為找不到，暫定球生效。',
+    warning: { zh:'注意：若你走到原球預計落點的前方，且暫定球打的位置比原球更靠近球洞，原球自動視為找不到，暫定球生效。',
+               en:'Important: If you walk beyond the point where the provisional ball lies (closer to the hole), the original ball is automatically deemed lost and the provisional is in play.' },
   },
 
   provisional_no: {
     type: 'result',
-    title: '可能出界 → 沒打暫定球',
-    ruleNo: '規則 18.3',
-    penalty: '確認出界或找不到 → 罰 1 桿',
+    title:     { zh:'可能出界 → 沒打暫定球',            en:'Possibly OB → No Provisional Played' },
+    ruleNo:    'Rule 18.3',
+    penalty:   { zh:'確認出界或找不到 → 罰 1 桿',        en:'If OB or lost confirmed → 1-stroke penalty' },
     penaltyFree: false,
-    summary: '沒打暫定球的話，要先等搜尋結果才能決定下一步。若確認出界或找不到，必須走回原位重打。',
+    summary:   { zh:'沒打暫定球的話，要先等搜尋結果才能決定下一步。若確認出界或找不到，必須走回原位重打。',
+                 en:'Without a provisional, you must wait for the search result before deciding. If OB or lost, you must return to the previous spot and replay.' },
     steps: [
-      '前往搜尋，限時 3 分鐘',
-      '找到原球且在界內 → 正常繼續打，無罰桿',
-      '確認出界或找不到 → 必須回到上一桿位置重打，罰 1 桿',
-      '若球場有適用本地規則 E-5，可考慮使用替代方案',
+      { zh:'前往搜尋，限時 3 分鐘',                             en:'Go search – 3-minute time limit' },
+      { zh:'找到原球且在界內 → 正常繼續打，無罰桿',             en:'Ball found in bounds → play it as is, no penalty' },
+      { zh:'確認出界或找不到 → 必須回到上一桿位置重打，罰 1 桿', en:'OB confirmed or not found → must return to previous spot and replay, 1-stroke penalty' },
+      { zh:'若球場有適用本地規則 E-5，可考慮使用替代方案',        en:'Check if Local Rule E-5 applies as an alternative to returning' },
     ],
-    warning: '教訓：只要有任何疑問，出發前就立刻宣告打暫定球！一句話省掉走回去的時間。',
+    warning: { zh:'教訓：只要有任何疑問，出發前就立刻宣告打暫定球！一句話省掉走回去的時間。',
+               en:'Lesson: Whenever there is any doubt, announce a provisional ball before walking forward. One sentence saves the long walk back.' },
     localRule: {
-      title: '本地規則 E-5（若球場有適用）',
-      desc: '可在球道上丟球，罰 2 桿，不需走回原位。但要先確認球場是否適用。'
+      title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
+      desc:  { zh:'可在球道上丟球，罰 2 桿，不需走回原位。但要先確認球場是否適用。',
+               en:'Drop in the fairway, 2-stroke penalty, no need to return. Confirm with the club before using.' }
     }
   },
 
   lost_not_ob: {
     type: 'result',
-    title: '球找不到（非 OB 區）',
-    ruleNo: '規則 18.2',
-    penalty: '罰 1 桿，回原位重打',
+    title:     { zh:'球找不到（非 OB 區）',              en:'Lost Ball (Not in OB Area)' },
+    ruleNo:    'Rule 18.2',
+    penalty:   { zh:'罰 1 桿，回原位重打',               en:'1 Stroke Penalty – Return to Previous Spot' },
     penaltyFree: false,
-    summary: '球找不到與出界的處理方式完全相同——一桿距離罰則，回原位重打。',
+    summary:   { zh:'球找不到與出界的處理方式完全相同——一桿距離罰則，回原位重打。',
+                 en:'A lost ball is treated identically to OB – Stroke and Distance applies.' },
     strokeCalc: {
-      title: '桿數怎麼算？（以第 2 桿找不到為例）',
+      title: { zh:'桿數怎麼算？（以第 2 桿找不到為例）', en:'How to count strokes? (Ball lost on 2nd stroke)' },
       rows: [
-        { label: '第 1 桿（發球）', val: '1 桿' },
-        { label: '第 2 桿（找不到）', val: '2 桿' },
-        { label: '罰桿', val: '+1' },
-        { label: '回第 2 桿位置重打', val: '⬆ 打第 4 桿' },
+        { label: { zh:'第 1 桿（發球）',       en:'1st stroke (tee)' },              val: { zh:'1 桿', en:'1 stroke' } },
+        { label: { zh:'第 2 桿（找不到）',     en:'2nd stroke (ball lost)' },        val: { zh:'2 桿', en:'2 strokes' } },
+        { label: { zh:'罰桿',                  en:'Penalty stroke' },                 val: { zh:'+1',   en:'+1' } },
+        { label: { zh:'回第 2 桿位置重打',     en:'Return to 2nd stroke spot' },      val: { zh:'⬆ 打第 4 桿', en:'⬆ Playing 4th stroke' } },
       ]
     },
     steps: [
-      '搜尋時限為 3 分鐘（從開始積極搜尋時起算）',
-      '超過 3 分鐘未找到，球視為丟失',
-      '回到上一桿的擊球位置，罰 1 桿，重新打',
-      '若球場有適用本地規則 E-5，可使用替代方案',
+      { zh:'搜尋時限為 3 分鐘（從開始積極搜尋時起算）',    en:'3-minute search limit from when active search begins' },
+      { zh:'超過 3 分鐘未找到，球視為丟失',               en:'If not found within 3 minutes, the ball is lost' },
+      { zh:'回到上一桿的擊球位置，罰 1 桿，重新打',        en:'Return to where the previous stroke was played, 1-stroke penalty, replay' },
+      { zh:'若球場有適用本地規則 E-5，可使用替代方案',      en:'Check if Local Rule E-5 applies as an alternative' },
     ],
-    warning: '3 分鐘是硬規定，超時後繼續找到球也不能用了。下次可先打暫定球再搜尋，省時又保險。',
+    warning: { zh:'3 分鐘是硬規定，超時後繼續找到球也不能用了。下次可先打暫定球再搜尋，省時又保險。',
+               en:'The 3-minute limit is strict – a ball found after time expires cannot be played. Play a provisional ball next time before searching.' },
     localRule: {
-      title: '本地規則 E-5（若球場有適用）',
-      desc: '可在球道上、距球消失點兩桿距離內丟球，罰 2 桿，不需走回去。'
+      title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
+      desc:  { zh:'可在球道上、距球消失點兩桿距離內丟球，罰 2 桿，不需走回去。',
+               en:'Drop in the fairway within 2 club-lengths of where ball disappeared, 2-stroke penalty, no need to walk back.' }
     }
   },
 
   // ── 水域 ─────────────────────────────────────
   penalty_area: {
     type: 'question',
-    title: '水域標記是什麼顏色？',
+    title: { zh:'水域標記是什麼顏色？', en:'What color are the penalty area stakes/lines?' },
     options: [
-      { id:'red_stake',    label:'紅色樁 / 紅線', desc:'側邊水域懲罰區（Lateral Penalty Area）', icon:'🔴' },
-      { id:'yellow_stake', label:'黃色樁 / 黃線', desc:'一般水域懲罰區（Penalty Area）',         icon:'🟡' },
+      { id:'red_stake',
+        label: { zh:'紅色樁 / 紅線', en:'Red Stakes / Red Line' },
+        desc:  { zh:'側邊水域懲罰區（Lateral Penalty Area）', en:'Lateral Penalty Area' },
+        icon:'🔴' },
+      { id:'yellow_stake',
+        label: { zh:'黃色樁 / 黃線', en:'Yellow Stakes / Yellow Line' },
+        desc:  { zh:'一般水域懲罰區（Penalty Area）', en:'General Penalty Area' },
+        icon:'🟡' },
     ]
   },
 
   red_stake: {
     type: 'result',
-    title: '紅樁水域（側邊懲罰區）',
-    ruleNo: '規則 17.1d',
-    penalty: '罰 1 桿，三種選擇',
+    title:     { zh:'紅樁水域（側邊懲罰區）',            en:'Red Stake – Lateral Penalty Area' },
+    ruleNo:    'Rule 17.1d',
+    penalty:   { zh:'罰 1 桿，三種選擇',                  en:'1 Stroke Penalty – 3 Options' },
     penaltyFree: false,
-    summary: '紅樁水域有 3 種救濟方式，最常用的是「側邊兩桿距離丟球」，最省時。',
+    summary:   { zh:'紅樁水域有 3 種救濟方式，最常用的是「側邊兩桿距離丟球」，最省時。',
+                 en:'A lateral penalty area offers 3 relief options. The most time-efficient is the lateral 2-club-length drop.' },
     steps: [
-      '【選項一】一桿距離罰則：回到上一桿擊球位置重打',
-      '【選項二】後方延伸線丟球：沿球入水點與球洞的連線往後延伸，選任一點丟球',
-      '【選項三】側邊兩桿距離丟球：從球入水點兩側，各兩桿距離內找合適位置丟球（最常用）',
+      { zh:'【選項一】一桿距離罰則：回到上一桿擊球位置重打',
+        en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
+      { zh:'【選項二】後方延伸線丟球：沿球入水點與球洞的連線往後延伸，選任一點丟球',
+        en:'[Option 2] Back-on-the-line: Drop on a line extending back from the hole through the point where ball last crossed the margin' },
+      { zh:'【選項三】側邊兩桿距離丟球：從球入水點兩側，各兩桿距離內找合適位置丟球（最常用）',
+        en:'[Option 3] Lateral relief: Drop within 2 club-lengths of either side of where ball last crossed the margin (most common)' },
     ],
-    warning: '所有丟球位置都不可比球入水點更靠近球洞。',
+    warning: { zh:'所有丟球位置都不可比球入水點更靠近球洞。',
+               en:'All drop areas must not be closer to the hole than where the ball last crossed the penalty area margin.' },
   },
 
   yellow_stake: {
     type: 'result',
-    title: '黃樁水域（一般懲罰區）',
-    ruleNo: '規則 17.1d',
-    penalty: '罰 1 桿，兩種選擇',
+    title:     { zh:'黃樁水域（一般懲罰區）',            en:'Yellow Stake – General Penalty Area' },
+    ruleNo:    'Rule 17.1d',
+    penalty:   { zh:'罰 1 桿，兩種選擇',                  en:'1 Stroke Penalty – 2 Options' },
     penaltyFree: false,
-    summary: '黃樁水域只有 2 種選擇，比紅樁少了「側邊丟球」選項，差異記清楚！',
+    summary:   { zh:'黃樁水域只有 2 種選擇，比紅樁少了「側邊丟球」選項，差異記清楚！',
+                 en:'A general penalty area only allows 2 options – no lateral drop. This is the key difference from red stakes.' },
     steps: [
-      '【選項一】一桿距離罰則：回到上一桿擊球位置重打',
-      '【選項二】後方延伸線丟球：沿球入水點與球洞連線往後延伸，選任一點丟球（無距離限制）',
+      { zh:'【選項一】一桿距離罰則：回到上一桿擊球位置重打',
+        en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
+      { zh:'【選項二】後方延伸線丟球：沿球入水點與球洞連線往後延伸，選任一點丟球（無距離限制）',
+        en:'[Option 2] Back-on-the-line: Drop anywhere on the line extending back from the hole through the entry point (no distance limit)' },
     ],
-    warning: '黃樁無法側邊丟球，這是與紅樁最大的差異。很多球友會搞混，裁判要特別注意。',
+    warning: { zh:'黃樁無法側邊丟球，這是與紅樁最大的差異。很多球友會搞混，裁判要特別注意。',
+               en:'Lateral drop is NOT available for yellow stakes. This is the most common confusion between red and yellow penalty areas.' },
   },
 
   // ── 沙坑 ─────────────────────────────────────
   bunker: {
     type: 'question',
-    title: '沙坑內的狀況是？',
+    title: { zh:'沙坑內的狀況是？', en:'What is the situation in the bunker?' },
     options: [
-      { id:'bunker_unplayable', label:'想宣告無法打擊（Unplayable）', desc:'球在沙坑內，但不想打，要救濟', icon:'😓' },
-      { id:'bunker_water',      label:'沙坑積水 / 修繕地區',          desc:'下雨積水，或沙坑內有 GUR 標示', icon:'🌊' },
-      { id:'bunker_loose',      label:'沙坑內有樹葉、石頭',           desc:'想知道能不能移除',              icon:'🍂' },
+      { id:'bunker_unplayable',
+        label: { zh:'想宣告無法打擊（Unplayable）', en:'Declare Unplayable Lie' },
+        desc:  { zh:'球在沙坑內，但不想打，要救濟',   en:'Ball is in bunker but you cannot or do not want to play it' },
+        icon:'😓' },
+      { id:'bunker_water',
+        label: { zh:'沙坑積水 / 修繕地區',           en:'Standing Water / GUR in Bunker' },
+        desc:  { zh:'下雨積水，或沙坑內有 GUR 標示',  en:'Rain water accumulated, or GUR area inside bunker' },
+        icon:'🌊' },
+      { id:'bunker_loose',
+        label: { zh:'沙坑內有樹葉、石頭',            en:'Loose Impediments in Bunker' },
+        desc:  { zh:'想知道能不能移除',               en:'Leaves, stones, twigs – can they be removed?' },
+        icon:'🍂' },
     ]
   },
 
   bunker_unplayable: {
     type: 'result',
-    title: '沙坑內宣告無法打擊',
-    ruleNo: '規則 19.3',
-    penalty: '罰 1 桿 或 罰 2 桿',
+    title:     { zh:'沙坑內宣告無法打擊',             en:'Unplayable Lie in Bunker' },
+    ruleNo:    'Rule 19.3',
+    penalty:   { zh:'罰 1 桿 或 罰 2 桿',             en:'1 or 2 Stroke Penalty' },
     penaltyFree: false,
-    summary: '沙坑內的 Unplayable 選擇受限制，大多數選項仍要留在沙坑內。要出沙坑，需額外多罰 1 桿。',
+    summary:   { zh:'沙坑內的 Unplayable 選擇受限制，大多數選項仍要留在沙坑內。要出沙坑，需額外多罰 1 桿。',
+                 en:'Unplayable options in a bunker are limited. Most options require the drop to remain in the bunker. Leaving the bunker costs an extra stroke.' },
     steps: [
-      '【罰 1 桿 選項一】回到上一桿擊球位置重打（可能是沙坑外）',
-      '【罰 1 桿 選項二】沿球位與球洞連線向後延伸，在沙坑內丟球',
-      '【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
-      '【罰 2 桿】在沙坑外後方延伸線上任意點丟球（比以上多罰 1 桿）',
+      { zh:'【罰 1 桿 選項一】回到上一桿擊球位置重打（可能是沙坑外）',
+        en:'[1 Stroke – Option 1] Stroke and Distance: Return to previous spot (may be outside bunker)' },
+      { zh:'【罰 1 桿 選項二】沿球位與球洞連線向後延伸，在沙坑內丟球',
+        en:'[1 Stroke – Option 2] Back-on-the-line relief within the bunker' },
+      { zh:'【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
+        en:'[1 Stroke – Option 3] Drop within 2 club-lengths within the bunker (not nearer the hole)' },
+      { zh:'【罰 2 桿】在沙坑外後方延伸線上任意點丟球（比以上多罰 1 桿）',
+        en:'[2 Strokes] Drop outside the bunker on the back-on-the-line reference (1 extra stroke to escape)' },
     ],
-    warning: '要離開沙坑需罰 2 桿，相當於比一般 Unplayable 多付一桿代價。',
+    warning: { zh:'要離開沙坑需罰 2 桿，相當於比一般 Unplayable 多付一桿代價。',
+               en:'Escaping the bunker costs 2 strokes total – one more than a standard unplayable lie.' },
   },
 
   bunker_water: {
     type: 'result',
-    title: '沙坑積水 / 異常地面狀況',
-    ruleNo: '規則 16.1c',
-    penalty: '免費救濟',
+    title:     { zh:'沙坑積水 / 異常地面狀況',         en:'Standing Water / GUR in Bunker' },
+    ruleNo:    'Rule 16.1c',
+    penalty:   { zh:'免費救濟',                         en:'Free Relief' },
     penaltyFree: true,
-    summary: '沙坑積水屬於「異常地面狀況」，可免費救濟，但丟球位置必須在沙坑內。',
+    summary:   { zh:'沙坑積水屬於「異常地面狀況」，可免費救濟，但丟球位置必須在沙坑內。',
+                 en:'Standing water in a bunker is an Abnormal Course Condition. Free relief is available, but the drop must remain within the bunker.' },
     steps: [
-      '確認積水影響到站姿或球的位置',
-      '找到最近救濟點（仍在沙坑內，沒有積水干擾）',
-      '在最近救濟點起一桿距離內丟球（必須留在沙坑內）',
-      '若整個沙坑都積水，可罰 1 桿在沙坑外後方延伸線丟球',
+      { zh:'確認積水影響到站姿或球的位置',                en:'Confirm the standing water interferes with your stance or ball position' },
+      { zh:'找到最近救濟點（仍在沙坑內，沒有積水干擾）',   en:'Find the nearest point of complete relief within the bunker (no interference)' },
+      { zh:'在最近救濟點起一桿距離內丟球（必須留在沙坑內）', en:'Drop within 1 club-length of that point (must stay in the bunker)' },
+      { zh:'若整個沙坑都積水，可罰 1 桿在沙坑外後方延伸線丟球',
+        en:'If the entire bunker is flooded, you may take relief outside the bunker with a 1-stroke penalty on the back-on-the-line reference' },
     ],
   },
 
   bunker_loose: {
     type: 'result',
-    title: '沙坑內的散置障礙物',
-    ruleNo: '規則 15.1',
-    penalty: '無罰桿',
+    title:     { zh:'沙坑內的散置障礙物',               en:'Loose Impediments in Bunker' },
+    ruleNo:    'Rule 15.1',
+    penalty:   { zh:'無罰桿',                           en:'No Penalty' },
     penaltyFree: true,
-    summary: '樹葉、石頭、樹枝等天然散置障礙物可以移除，但沙子本身不可移動。',
+    summary:   { zh:'樹葉、石頭、樹枝等天然散置障礙物可以移除，但沙子本身不可移動。',
+                 en:'Natural loose impediments (leaves, stones, twigs) may be removed from bunkers. Sand itself cannot be moved or tested.' },
     steps: [
-      '樹葉、石頭、樹枝、果實等天然物 → 可以移除',
-      '球場耙子、人工障礙物 → 也可以移除',
-      '若移除時球跟著移動 → 將球放回原位，無罰桿',
+      { zh:'樹葉、石頭、樹枝、果實等天然物 → 可以移除',  en:'Leaves, stones, twigs, natural objects → may be removed' },
+      { zh:'球場耙子、人工障礙物 → 也可以移除',           en:'Artificial loose impediments (rakes, etc.) → may also be removed' },
+      { zh:'若移除時球跟著移動 → 將球放回原位，無罰桿',   en:'If ball moves when removing impediment → replace ball in original position, no penalty' },
     ],
-    warning: '注意：打球前不可用手或球桿觸碰沙坑的沙（會被判為測試地面）。',
+    warning: { zh:'注意：打球前不可用手或球桿觸碰沙坑的沙（會被判為測試地面）。',
+               en:'Do not touch or test the sand with hands or club before making a stroke – this is a penalty under Rule 12.2b.' },
   },
 
   // ── Unplayable ────────────────────────────────
   unplayable: {
     type: 'result',
-    title: '宣告無法打擊（Unplayable）',
-    ruleNo: '規則 19.2',
-    penalty: '罰 1 桿，三種選擇',
+    title:     { zh:'宣告無法打擊（Unplayable）',        en:'Unplayable Lie' },
+    ruleNo:    'Rule 19.2',
+    penalty:   { zh:'罰 1 桿，三種選擇',                  en:'1 Stroke Penalty – 3 Options' },
     penaltyFree: false,
-    summary: '球員可在任何地方（沙坑有特殊規定）自行宣告 Unplayable，不需裁判確認。選哪個選項最合算，由球員自己決定。',
+    summary:   { zh:'球員可在任何地方（沙坑有特殊規定）自行宣告 Unplayable，不需裁判確認。選哪個選項最合算，由球員自己決定。',
+                 en:'A player may declare any ball unplayable anywhere on the course (bunkers have special rules). No referee confirmation needed. The player chooses the most advantageous option.' },
     steps: [
-      '【選項一】回到上一桿擊球位置重打（一桿距離罰則）',
-      '【選項二】以球位為圓心，兩桿距離內丟球（不可更靠近球洞）',
-      '【選項三】沿球位與球洞連線向後延伸，在線上任一點丟球（無距離限制）',
+      { zh:'【選項一】回到上一桿擊球位置重打（一桿距離罰則）',
+        en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
+      { zh:'【選項二】以球位為圓心，兩桿距離內丟球（不可更靠近球洞）',
+        en:'[Option 2] Drop within 2 club-lengths of the ball\'s position (not nearer the hole)' },
+      { zh:'【選項三】沿球位與球洞連線向後延伸，在線上任一點丟球（無距離限制）',
+        en:'[Option 3] Drop anywhere on a line extending back from the hole through the ball\'s position (no distance limit)' },
     ],
-    warning: '球在樹上也可以宣告 Unplayable！只要認為無法安全打擊就可以宣告，但一律罰 1 桿。',
+    warning: { zh:'球在樹上也可以宣告 Unplayable！只要認為無法安全打擊就可以宣告，但一律罰 1 桿。',
+               en:'A ball lodged in a tree may also be declared unplayable! As long as you can identify it, you may take the 1-stroke relief without climbing.' },
   },
 
   // ── 障礙物 ────────────────────────────────────
   obstruction: {
     type: 'question',
-    title: '障礙物的類型？',
+    title: { zh:'障礙物的類型？', en:'What type of obstruction?' },
     options: [
-      { id:'movable_obs',   label:'可移動障礙物',     desc:'垃圾桶、飲水機、廣告旗、標示牌等',  icon:'🚮' },
-      { id:'immovable_obs', label:'不可移動障礙物',   desc:'排水溝蓋、涼亭、水泥路徑、固定圍欄', icon:'🏗️' },
-      { id:'gur',           label:'修繕地區（GUR）',  desc:'藍線或 GUR 標示的區域',              icon:'🔵' },
+      { id:'movable_obs',
+        label: { zh:'可移動障礙物',     en:'Movable Obstruction' },
+        desc:  { zh:'垃圾桶、飲水機、廣告旗、標示牌等',   en:'Trash bins, water coolers, advertising flags, signs' },
+        icon:'🚮' },
+      { id:'immovable_obs',
+        label: { zh:'不可移動障礙物',   en:'Immovable Obstruction' },
+        desc:  { zh:'排水溝蓋、涼亭、水泥路徑、固定圍欄', en:'Drain covers, shelters, paved paths, fixed fences' },
+        icon:'🏗️' },
+      { id:'gur',
+        label: { zh:'修繕地區（GUR）',  en:'Ground Under Repair (GUR)' },
+        desc:  { zh:'藍線或 GUR 標示的區域',             en:'Areas marked with blue lines or GUR signs' },
+        icon:'🔵' },
     ]
   },
 
   movable_obs: {
     type: 'result',
-    title: '可移動障礙物',
-    ruleNo: '規則 15.2',
-    penalty: '無罰桿',
+    title:     { zh:'可移動障礙物',                       en:'Movable Obstruction' },
+    ruleNo:    'Rule 15.2',
+    penalty:   { zh:'無罰桿',                             en:'No Penalty' },
     penaltyFree: true,
-    summary: '可以直接移開可移動障礙物，不需任何救濟程序，也沒有罰桿。',
+    summary:   { zh:'可以直接移開可移動障礙物，不需任何救濟程序，也沒有罰桿。',
+                 en:'Movable obstructions may be removed without penalty. No relief procedure needed.' },
     steps: [
-      '直接移開障礙物',
-      '若移動障礙物時球跟著移動 → 將球放回原位，無罰桿',
-      '若球壓在障礙物下方 → 移開障礙物後，在最近救濟點一桿距離內丟球',
+      { zh:'直接移開障礙物',                                en:'Simply remove the obstruction' },
+      { zh:'若移動障礙物時球跟著移動 → 將球放回原位，無罰桿', en:'If ball moves when removing obstruction → replace ball in original position, no penalty' },
+      { zh:'若球壓在障礙物下方 → 移開障礙物後，在最近救濟點一桿距離內丟球',
+        en:'If ball lies in or under obstruction → remove it and drop within 1 club-length of nearest point of relief' },
     ],
   },
 
   immovable_obs: {
     type: 'result',
-    title: '不可移動障礙物',
-    ruleNo: '規則 16.1',
-    penalty: '免費救濟',
+    title:     { zh:'不可移動障礙物',                      en:'Immovable Obstruction' },
+    ruleNo:    'Rule 16.1',
+    penalty:   { zh:'免費救濟',                            en:'Free Relief' },
     penaltyFree: true,
-    summary: '如果不可移動障礙物影響站姿或揮桿動作，可免費救濟。視線被擋不算理由。',
+    summary:   { zh:'如果不可移動障礙物影響站姿或揮桿動作，可免費救濟。視線被擋不算理由。',
+                 en:'If an immovable obstruction physically interferes with your stance or swing, free relief is available. Visual interference does not qualify.' },
     steps: [
-      '確認干擾：影響到站姿或揮桿（視線被擋不算）',
-      '找到最近救濟點（障礙物無干擾、距球最近、不更靠近球洞的點）',
-      '在最近救濟點起一桿距離內丟球',
-      '丟球後確認站姿、揮桿都不受干擾',
+      { zh:'確認干擾：影響到站姿或揮桿（視線被擋不算）',
+        en:'Confirm physical interference: stance or area of intended swing (not just line of sight)' },
+      { zh:'找到最近救濟點（障礙物無干擾、距球最近、不更靠近球洞的點）',
+        en:'Find the nearest point of complete relief (closest point with no interference, not nearer the hole)' },
+      { zh:'在最近救濟點起一桿距離內丟球',                  en:'Drop within 1 club-length of that nearest point' },
+      { zh:'丟球後確認站姿、揮桿都不受干擾',               en:'After dropping, verify stance and swing area are both free of interference' },
     ],
-    warning: '只有實體干擾才能免費救濟。若障礙物只擋住視線，不符合免費救濟條件，但可宣告 Unplayable 罰 1 桿。',
+    warning: { zh:'只有實體干擾才能免費救濟。若障礙物只擋住視線，不符合免費救濟條件，但可宣告 Unplayable 罰 1 桿。',
+               en:'Only physical interference qualifies for free relief. Line-of-sight obstruction does not – but you may declare unplayable (1-stroke penalty).' },
   },
 
   gur: {
     type: 'result',
-    title: '修繕地區（GUR / Ground Under Repair）',
-    ruleNo: '規則 16.1',
-    penalty: '免費救濟',
+    title:     { zh:'修繕地區（GUR / Ground Under Repair）', en:'Ground Under Repair (GUR)' },
+    ruleNo:    'Rule 16.1',
+    penalty:   { zh:'免費救濟',                            en:'Free Relief' },
     penaltyFree: true,
-    summary: '球在 GUR 內，或 GUR 干擾到站姿揮桿，可免費救濟。',
+    summary:   { zh:'球在 GUR 內，或 GUR 干擾到站姿揮桿，可免費救濟。',
+                 en:'If your ball lies in GUR, or GUR physically interferes with your stance or swing, free relief is available.' },
     steps: [
-      '確認球在 GUR 內（藍線內），或 GUR 干擾到站姿 / 揮桿',
-      '找到最近救濟點（GUR 外、無干擾、不更靠近球洞）',
-      '在最近救濟點一桿距離內丟球',
+      { zh:'確認球在 GUR 內（藍線內），或 GUR 干擾到站姿 / 揮桿',
+        en:'Confirm ball is in GUR or GUR interferes with stance/swing' },
+      { zh:'找到最近救濟點（GUR 外、無干擾、不更靠近球洞）',
+        en:'Find nearest point of complete relief (outside GUR, no interference, not nearer hole)' },
+      { zh:'在最近救濟點一桿距離內丟球',                   en:'Drop within 1 club-length of that point' },
     ],
-    warning: '球在 GUR 旁邊，但站姿、揮桿沒有受干擾 → 不符合免費救濟條件。',
+    warning: { zh:'球在 GUR 旁邊，但站姿、揮桿沒有受干擾 → 不符合免費救濟條件。',
+               en:'If GUR is adjacent to your ball but does not physically affect your stance or swing, free relief does not apply.' },
   },
 
   // ── 錯誤果嶺 ──────────────────────────────────
   wrong_green: {
     type: 'result',
-    title: '球在錯誤果嶺上',
-    ruleNo: '規則 13.1f',
-    penalty: '免費救濟（強制必須移出）',
+    title:     { zh:'球在錯誤果嶺上',                      en:'Ball on Wrong Green' },
+    ruleNo:    'Rule 13.1f',
+    penalty:   { zh:'免費救濟（強制必須移出）',             en:'Free Relief (Mandatory)' },
     penaltyFree: true,
-    summary: '球停在非比賽洞的果嶺上，必須強制移出，不可在錯誤果嶺上推桿。',
+    summary:   { zh:'球停在非比賽洞的果嶺上，必須強制移出，不可在錯誤果嶺上推桿。',
+                 en:'A ball resting on a wrong putting green must be lifted. Playing from a wrong putting green is not permitted.' },
     steps: [
-      '找到最近救濟點（果嶺外、無干擾、不更靠近球洞）',
-      '在最近救濟點一桿距離內丟球',
-      '即使球員想留在原位也不行，這是強制救濟',
+      { zh:'找到最近救濟點（果嶺外、無干擾、不更靠近球洞）',
+        en:'Find the nearest point of complete relief off the putting green (not nearer the hole)' },
+      { zh:'在最近救濟點一桿距離內丟球',                    en:'Drop within 1 club-length of that point' },
+      { zh:'即使球員想留在原位也不行，這是強制救濟',         en:'This is mandatory – the player cannot choose to play from the wrong green' },
     ],
-    warning: '練習果嶺也算「錯誤果嶺」，球停在上面一樣必須強制移出。',
+    warning: { zh:'練習果嶺也算「錯誤果嶺」，球停在上面一樣必須強制移出。',
+               en:'Practice putting greens are also considered wrong greens. A ball resting on one must also be lifted.' },
   },
 
   // ── 打錯球 ────────────────────────────────────
   wrong_ball: {
     type: 'result',
-    title: '打到別人的球（打錯球）',
-    ruleNo: '規則 6.3c',
-    penalty: '罰 2 桿',
+    title:     { zh:'打到別人的球（打錯球）',               en:'Played a Wrong Ball' },
+    ruleNo:    'Rule 6.3c',
+    penalty:   { zh:'罰 2 桿',                             en:'2 Stroke Penalty' },
     penaltyFree: false,
-    summary: '打到別人的球屬於「打錯球」違規，罰 2 桿，必須回去找自己的球繼續打。',
+    summary:   { zh:'打到別人的球屬於「打錯球」違規，罰 2 桿，必須回去找自己的球繼續打。',
+                 en:'Playing a wrong ball results in a 2-stroke penalty. You must then find your own ball and continue from its original position.' },
     steps: [
-      '立即停止用那顆球繼續打',
-      '找到自己的球，從原位繼續打',
-      '計入 2 桿罰桿',
-      '若自己的球找不到 → 適用球找不到的規則（另加 1 桿罰則，回原位）',
+      { zh:'立即停止用那顆球繼續打',                        en:'Stop playing with that ball immediately' },
+      { zh:'找到自己的球，從原位繼續打',                    en:'Find your own ball and play it from its original position' },
+      { zh:'計入 2 桿罰桿',                                 en:'Add 2 penalty strokes to your score' },
+      { zh:'若自己的球找不到 → 適用球找不到的規則（另加 1 桿罰則，回原位）',
+        en:'If your own ball cannot be found → apply the lost ball rule (additional 1-stroke penalty, return to previous spot)' },
     ],
-    warning: '打球前務必確認球的品牌、號碼及個人識別標記。建議每次開球前用筆在球上畫獨特記號。',
+    warning: { zh:'打球前務必確認球的品牌、號碼及個人識別標記。建議每次開球前用筆在球上畫獨特記號。',
+               en:'Always verify ball markings before playing – brand, number, and personal identification marks. Consider adding a unique mark to your ball before each hole.' },
   },
 
 };
@@ -611,10 +781,10 @@ const TREE = {
 // ─────────────────────────────────────────────
 // 應用程式邏輯
 // ─────────────────────────────────────────────
-let history = [{ id: 'home', label: '首頁' }];
+let history = [{ id: 'home' }];
 
 function goHome() {
-  history = [{ id: 'home', label: '首頁' }];
+  history = [{ id: 'home' }];
   render();
 }
 
@@ -627,9 +797,21 @@ function jumpTo(idx) {
   render();
 }
 
-function navigate(id, label) {
-  history.push({ id, label });
+function navigate(id) {
+  history.push({ id });
   render();
+}
+
+function getBreadcrumbLabel(id, idx) {
+  if (idx === 0) return t(UI.home);
+  // find the option in the parent node
+  const parentId = history[idx - 1].id;
+  const parent = TREE[parentId];
+  if (parent && parent.options) {
+    const opt = parent.options.find(o => o.id === id);
+    if (opt) return t(opt.label);
+  }
+  return id;
 }
 
 function render() {
@@ -637,88 +819,87 @@ function render() {
   const node = TREE[cur.id];
   if (!node) return;
 
-  // --- breadcrumb ---
+  // breadcrumb
   document.getElementById('breadcrumb').innerHTML =
     history.map((h, i) => {
-      if (i === 0) return `<span class="bc-link" onclick="goHome()">首頁</span>`;
-      const label = h.label.length > 12 ? h.label.slice(0, 12) + '…' : h.label;
+      const rawLabel = getBreadcrumbLabel(h.id, i);
+      const label = rawLabel.length > 14 ? rawLabel.slice(0, 14) + '…' : rawLabel;
+      if (i === 0) return `<span class="bc-link" onclick="goHome()">${label}</span>`;
       if (i === history.length - 1) return `<span class="bc-sep">›</span><span style="color:#333">${label}</span>`;
       return `<span class="bc-sep">›</span><span class="bc-link" onclick="jumpTo(${i})">${label}</span>`;
     }).join('');
 
-  // --- main content ---
   const app = document.getElementById('app');
 
   if (node.type === 'question') {
     app.innerHTML = `
-      ${history.length > 1 ? `<div class="back-btn" onclick="goBack()">← 返回上一步</div>` : ''}
-      <div class="question-title">${node.title}</div>
+      ${history.length > 1 ? `<div class="back-btn" onclick="goBack()">${t(UI.back)}</div>` : ''}
+      <div class="question-title">${t(node.title)}</div>
       <div class="options-grid">
         ${node.options.map(o => `
-          <div class="option-card" onclick="navigate('${o.id}', '${o.label}')">
+          <div class="option-card" onclick="navigate('${o.id}')">
             <div class="opt-icon">${o.icon}</div>
             <div class="opt-text">
-              <h3>${o.label}</h3>
-              ${o.desc ? `<p>${o.desc}</p>` : ''}
+              <h3>${t(o.label)}</h3>
+              ${o.desc ? `<p>${t(o.desc)}</p>` : ''}
             </div>
             <div class="opt-arrow">›</div>
-          </div>
-        `).join('')}
+          </div>`).join('')}
       </div>`;
 
   } else if (node.type === 'result') {
     const sc = node.strokeCalc;
     app.innerHTML = `
-      <div class="back-btn" onclick="goBack()">← 返回上一步</div>
+      <div class="back-btn" onclick="goBack()">${t(UI.back)}</div>
       <div class="result-card">
         <div class="result-header">
           <div class="rule-badge">${node.ruleNo}</div>
-          <h2>${node.title}</h2>
+          <h2>${t(node.title)}</h2>
           <div class="penalty-badge ${node.penaltyFree ? 'penalty-free' : ''}">
-            ${node.penaltyFree ? '✅' : '⚠️'} ${node.penalty}
+            ${node.penaltyFree ? '✅' : '⚠️'} ${t(node.penalty)}
           </div>
         </div>
         <div class="result-body">
-          <p class="summary-text">${node.summary}</p>
+          <p class="summary-text">${t(node.summary)}</p>
 
           ${sc ? `
           <div class="stroke-box">
-            <div class="stroke-box-title">🧮 ${sc.title}</div>
+            <div class="stroke-box-title">🧮 ${t(sc.title)}</div>
             ${sc.rows.map(r => `
               <div class="stroke-row">
-                <span>${r.label}</span>
-                <span class="stroke-val">${r.val}</span>
+                <span>${t(r.label)}</span>
+                <span class="stroke-val">${t(r.val)}</span>
               </div>`).join('')}
           </div>` : ''}
 
-          <div class="section-label">處理步驟</div>
+          <div class="section-label">${t(UI.steps)}</div>
           <ol class="steps">
-            ${node.steps.map(s => `<li>${s}</li>`).join('')}
+            ${node.steps.map(s => `<li>${t(s)}</li>`).join('')}
           </ol>
 
           ${node.warning ? `
           <div class="warning-box">
-            <span>⚠️</span><span>${node.warning}</span>
+            <span>⚠️</span><span>${t(node.warning)}</span>
           </div>` : ''}
 
           ${node.localRule ? `
           <div class="local-rule-box">
-            <strong>📋 ${node.localRule.title}</strong>
-            ${node.localRule.desc}
+            <strong>📋 ${t(node.localRule.title)}</strong>
+            ${t(node.localRule.desc)}
           </div>` : ''}
 
           <div class="btn-row">
-            <button class="btn btn-secondary" onclick="goBack()">← 返回</button>
-            <button class="btn btn-primary" onclick="goHome()">🏠 查詢其他規則</button>
+            <button class="btn btn-secondary" onclick="goBack()">${t(UI.backShort)}</button>
+            <button class="btn btn-primary" onclick="goHome()">${t(UI.homeBtn)}</button>
           </div>
         </div>
       </div>`;
   }
 }
 
+applyLangUI();
 render();
 
-// PWA Service Worker 註冊
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
