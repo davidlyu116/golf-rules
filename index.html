@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>高爾夫規則速查</title>
+    <meta name="description" content="點選情境快速查詢高爾夫規則與罰則，依據 R&A/USGA 2023 現行規則">
+    <meta name="theme-color" content="#1a5c2a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Golf規則">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -710,6 +717,14 @@ function render() {
 }
 
 render();
+
+// PWA Service Worker 註冊
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .catch(err => console.warn('SW registration failed:', err));
+  });
+}
 </script>
 </body>
 </html>

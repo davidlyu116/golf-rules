@@ -1,0 +1,26 @@
+{
+  "name": "高爾夫規則速查",
+  "short_name": "Golf規則",
+  "description": "點選情境快速查詢高爾夫規則與罰則，依據 R&A/USGA 2023 現行規則",
+  "start_url": "/golf-rules/",
+  "scope": "/golf-rules/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a5c2a",
+  "background_color": "#f0f7f0",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
