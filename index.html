@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高爾夫規則速查</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f0f7f0;
+            min-height: 100vh;
+        }
+        .header {
+            background: #1a5c2a;
+            color: white;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .header-logo { font-size: 2.2rem; }
+        .header h1 { font-size: 1.15rem; font-weight: 700; }
+        .header .subtitle { font-size: 0.72rem; opacity: 0.75; margin-top: 2px; }
+        .breadcrumb {
+            padding: 10px 20px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            color: #666;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .bc-link { color: #1a5c2a; cursor: pointer; font-weight: 600; }
+        .bc-sep { color: #ccc; }
+        .main {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+        .question-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a2e1a;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+        .options-grid { display: flex; flex-direction: column; gap: 11px; }
+        .option-card {
+            background: white;
+            border: 2px solid #deeede;
+            border-radius: 12px;
+            padding: 15px 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.15s;
+        }
+        .option-card:hover {
+            border-color: #1a5c2a;
+            background: #f0f9f0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(26,92,42,0.12);
+        }
+        .option-card:active { transform: translateY(0); }
+        .opt-icon { font-size: 1.9rem; flex-shrink: 0; }
+        .opt-text h3 { font-size: 0.97rem; font-weight: 600; color: #1a2e1a; }
+        .opt-text p { font-size: 0.78rem; color: #777; margin-top: 2px; }
+        .opt-arrow { margin-left: auto; color: #bbb; font-size: 1.3rem; flex-shrink: 0; }
+        /* Result */
+        .result-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .result-header { background: #1a5c2a; color: white; padding: 20px; }
+        .rule-badge {
+            background: rgba(255,255,255,0.18);
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 9px;
+        }
+        .result-header h2 { font-size: 1.2rem; font-weight: 700; line-height: 1.35; }
+        .penalty-badge {
+            display: inline-block;
+            background: #e53935;
+            color: white;
+            padding: 7px 18px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+        .penalty-free {
+            background: #388e3c;
+        }
+        .result-body { padding: 20px; }
+        .summary-text { font-size: 0.93rem; line-height: 1.65; color: #333; margin-bottom: 18px; }
+        .stroke-box {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            border-radius: 12px;
+            padding: 16px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .stroke-box-title { font-size: 0.8rem; opacity: 0.88; margin-bottom: 10px; font-weight: 600; }
+        .stroke-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+            font-size: 0.88rem;
+        }
+        .stroke-row:last-child { border-bottom: none; }
+        .stroke-val { font-weight: 700; font-size: 1.05rem; }
+        .section-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #1a5c2a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+        }
+        .steps { counter-reset: step-counter; list-style: none; margin-bottom: 18px; }
+        .steps li {
+            counter-increment: step-counter;
+            display: flex;
+            gap: 11px;
+            margin-bottom: 11px;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #333;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            background: #1a5c2a;
+            color: white;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .warning-box {
+            background: #fff8e1;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 11px 14px;
+            font-size: 0.84rem;
+            color: #6d4c00;
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        .local-rule-box {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 8px;
+            padding: 13px 15px;
+            font-size: 0.85rem;
+            color: #0d47a1;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .local-rule-box strong { display: block; margin-bottom: 5px; font-size: 0.88rem; }
+        .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+        .btn {
+            flex: 1;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.15s;
+        }
+        .btn:active { opacity: 0.8; }
+        .btn-primary { background: #1a5c2a; color: white; }
+        .btn-secondary { background: #e0ede0; color: #1a3a1a; }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #1a5c2a;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 10px 0 16px;
+            font-size: 0.9rem;
+        }
+        .back-btn:hover { opacity: 0.75; }
+        @media (max-width: 400px) {
+            .question-title { font-size: 1.1rem; }
+            .opt-icon { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-logo">⛳</div>
+    <div>
+        <h1>高爾夫規則速查</h1>
+        <div class="subtitle">依據 R&amp;A / USGA 2023 現行規則</div>
+    </div>
+</div>
+
+<div class="breadcrumb" id="breadcrumb"></div>
+
+<div class="main" id="app"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// 情境資料庫（JSON 樹狀結構）
+// ─────────────────────────────────────────────
+const TREE = {
+
+  home: {
+    type: 'question',
+    title: '發生什麼狀況？',
+    options: [
+      { id:'ob_lost',      label:'球出界 / 球找不到',   desc:'白線外、OB 樁外，或超過 3 分鐘找不到',  icon:'🚫' },
+      { id:'penalty_area', label:'球進入水域',           desc:'進入紅樁或黃樁標示的水域懲罰區',         icon:'💧' },
+      { id:'bunker',       label:'球在沙坑',             desc:'沙坑內各種情況',                          icon:'🏖️' },
+      { id:'unplayable',   label:'無法打擊（Unplayable）', desc:'球卡在樹叢、石縫、斜坡等難以揮桿',     icon:'🌿' },
+      { id:'obstruction',  label:'障礙物干擾',           desc:'固定設施、排水溝蓋、GUR 修繕區等',       icon:'🚧' },
+      { id:'wrong_green',  label:'球在錯誤果嶺',         desc:'球停在非比賽洞的果嶺上',                  icon:'🟢' },
+      { id:'wrong_ball',   label:'打到別人的球',         desc:'不小心用別人的球擊打',                    icon:'⚠️' },
+    ]
+  },
+
+  // ── OB / 找不到 ───────────────────────────────
+  ob_lost: {
+    type: 'question',
+    title: '球的狀況是？',
+    options: [
+      { id:'ob_confirmed', label:'確定出界（OB）',       desc:'越過白線或白樁外側',          icon:'🚫' },
+      { id:'ob_uncertain', label:'可能出界，不確定',     desc:'看到飛出去但不確定落點',       icon:'🔍' },
+      { id:'lost_not_ob',  label:'球找不到（非 OB 區）', desc:'在球道、長草區找超過 3 分鐘',  icon:'🌾' },
+    ]
+  },
+
+  ob_confirmed: {
+    type: 'question',
+    title: '從哪裡打出界的？',
+    options: [
+      { id:'ob_tee',      label:'從發球台打出界', desc:'第一桿從 Tee 台打出界', icon:'🏌️' },
+      { id:'ob_fairway',  label:'從球道或其他位置打出界', desc:'第二桿以後打出界', icon:'⛳' },
+    ]
+  },
+
+  ob_uncertain: {
+    type: 'question',
+    title: '你有沒有打暫定球（Provisional）？',
+    options: [
+      { id:'provisional_yes', label:'有打暫定球', desc:'已向同組球友宣告，並打了第二顆球', icon:'✅' },
+      { id:'provisional_no',  label:'沒有打暫定球', desc:'沒宣告，直接往前走', icon:'❌' },
+    ]
+  },
+
+  ob_tee: {
+    type: 'result',
+    title: '發球台打出界（OB）',
+    ruleNo: '規則 18.2',
+    penalty: '罰 1 桿，回發球台重打',
+    penaltyFree: false,
+    summary: '出界採「一桿距離罰則」（Stroke and Distance）。從發球台出界，回到發球台區域打第 3 桿。',
+    strokeCalc: {
+      title: '桿數怎麼算？（Par 4 為例）',
+      rows: [
+        { label: '第 1 桿（發球，出界）', val: '1 桿' },
+        { label: '罰桿', val: '+1' },
+        { label: '回發球台重打', val: '⬆ 打第 3 桿' },
+      ]
+    },
+    steps: [
+      '確認球在 OB 白線外側（整顆球都出界才算）',
+      '回到發球台區域',
+      '可在發球台任意位置放球座重新開球',
+      '這一桿計為第 3 桿',
+    ],
+    warning: '若有事先打暫定球，暫定球即自動成為比賽球（同樣打第 3 桿），不需另行宣告。',
+    localRule: {
+      title: '本地規則 E-5（若球場有適用）',
+      desc: '可不走回發球台，在球道上從出界點兩桿距離內丟球，但罰 2 桿（打第 4 桿）。請先向球場工作人員確認是否適用。'
+    }
+  },
+
+  ob_fairway: {
+    type: 'result',
+    title: '球道 / 其他位置打出界（OB）',
+    ruleNo: '規則 18.2',
+    penalty: '罰 1 桿，回原位重打',
+    penaltyFree: false,
+    summary: '出界採「一桿距離罰則」。第 N 桿打出界，需回到第 N 桿的擊球位置，打第 N+2 桿。',
+    strokeCalc: {
+      title: '桿數怎麼算？（以第 2 桿出界為例）',
+      rows: [
+        { label: '第 1 桿（發球，落點 OK）', val: '1 桿' },
+        { label: '第 2 桿（打出界）', val: '2 桿' },
+        { label: '罰桿', val: '+1' },
+        { label: '回第 2 桿位置重打', val: '⬆ 打第 4 桿' },
+      ]
+    },
+    steps: [
+      '確認球在 OB 白線外側',
+      '回到上一桿的擊球位置',
+      '在距原擊球點一桿距離內（不更靠近球洞）丟球',
+      '重新打，計桿為原來桿數 +2',
+    ],
+    warning: '若不確定原位在哪裡，以最接近原始擊球點的合理位置為準，同組球友可協助確認。',
+    localRule: {
+      title: '本地規則 E-5（若球場有適用）',
+      desc: '可在球道上、從球飛越邊界點旁兩桿距離內丟球，罰 2 桿。比走回去省時許多。'
+    }
+  },
+
+  provisional_yes: {
+    type: 'result',
+    title: '可能出界 → 有打暫定球',
+    ruleNo: '規則 18.3',
+    penalty: '視情況定（最多罰 1 桿）',
+    penaltyFree: false,
+    summary: '打暫定球是最聰明的選擇！讓球局順暢，不用等走回去重打。',
+    strokeCalc: {
+      title: '桿數怎麼算？（以發球台第 1 桿為例）',
+      rows: [
+        { label: '第 1 桿（懷疑出界）', val: '1 桿' },
+        { label: '宣告暫定球（計第 2 桿 +罰1）', val: '第 2 桿打' },
+        { label: '原球確認出界，暫定球生效', val: '⬆ 繼續打第 4 桿' },
+      ]
+    },
+    steps: [
+      '前往球可能的落點搜尋原球（從開始搜尋起 3 分鐘）',
+      '找到原球且在界內 → 必須改用原球，暫定球作廢',
+      '原球確認出界或 3 分鐘找不到 → 暫定球成為比賽球，罰 1 桿',
+      '用暫定球繼續打完這個洞',
+    ],
+    warning: '注意：若你走到原球預計落點的前方，且暫定球打的位置比原球更靠近球洞，原球自動視為找不到，暫定球生效。',
+  },
+
+  provisional_no: {
+    type: 'result',
+    title: '可能出界 → 沒打暫定球',
+    ruleNo: '規則 18.3',
+    penalty: '確認出界或找不到 → 罰 1 桿',
+    penaltyFree: false,
+    summary: '沒打暫定球的話，要先等搜尋結果才能決定下一步。若確認出界或找不到，必須走回原位重打。',
+    steps: [
+      '前往搜尋，限時 3 分鐘',
+      '找到原球且在界內 → 正常繼續打，無罰桿',
+      '確認出界或找不到 → 必須回到上一桿位置重打，罰 1 桿',
+      '若球場有適用本地規則 E-5，可考慮使用替代方案',
+    ],
+    warning: '教訓：只要有任何疑問，出發前就立刻宣告打暫定球！一句話省掉走回去的時間。',
+    localRule: {
+      title: '本地規則 E-5（若球場有適用）',
+      desc: '可在球道上丟球，罰 2 桿，不需走回原位。但要先確認球場是否適用。'
+    }
+  },
+
+  lost_not_ob: {
+    type: 'result',
+    title: '球找不到（非 OB 區）',
+    ruleNo: '規則 18.2',
+    penalty: '罰 1 桿，回原位重打',
+    penaltyFree: false,
+    summary: '球找不到與出界的處理方式完全相同——一桿距離罰則，回原位重打。',
+    strokeCalc: {
+      title: '桿數怎麼算？（以第 2 桿找不到為例）',
+      rows: [
+        { label: '第 1 桿（發球）', val: '1 桿' },
+        { label: '第 2 桿（找不到）', val: '2 桿' },
+        { label: '罰桿', val: '+1' },
+        { label: '回第 2 桿位置重打', val: '⬆ 打第 4 桿' },
+      ]
+    },
+    steps: [
+      '搜尋時限為 3 分鐘（從開始積極搜尋時起算）',
+      '超過 3 分鐘未找到，球視為丟失',
+      '回到上一桿的擊球位置，罰 1 桿，重新打',
+      '若球場有適用本地規則 E-5，可使用替代方案',
+    ],
+    warning: '3 分鐘是硬規定，超時後繼續找到球也不能用了。下次可先打暫定球再搜尋，省時又保險。',
+    localRule: {
+      title: '本地規則 E-5（若球場有適用）',
+      desc: '可在球道上、距球消失點兩桿距離內丟球，罰 2 桿，不需走回去。'
+    }
+  },
+
+  // ── 水域 ─────────────────────────────────────
+  penalty_area: {
+    type: 'question',
+    title: '水域標記是什麼顏色？',
+    options: [
+      { id:'red_stake',    label:'紅色樁 / 紅線', desc:'側邊水域懲罰區（Lateral Penalty Area）', icon:'🔴' },
+      { id:'yellow_stake', label:'黃色樁 / 黃線', desc:'一般水域懲罰區（Penalty Area）',         icon:'🟡' },
+    ]
+  },
+
+  red_stake: {
+    type: 'result',
+    title: '紅樁水域（側邊懲罰區）',
+    ruleNo: '規則 17.1d',
+    penalty: '罰 1 桿，三種選擇',
+    penaltyFree: false,
+    summary: '紅樁水域有 3 種救濟方式，最常用的是「側邊兩桿距離丟球」，最省時。',
+    steps: [
+      '【選項一】一桿距離罰則：回到上一桿擊球位置重打',
+      '【選項二】後方延伸線丟球：沿球入水點與球洞的連線往後延伸，選任一點丟球',
+      '【選項三】側邊兩桿距離丟球：從球入水點兩側，各兩桿距離內找合適位置丟球（最常用）',
+    ],
+    warning: '所有丟球位置都不可比球入水點更靠近球洞。',
+  },
+
+  yellow_stake: {
+    type: 'result',
+    title: '黃樁水域（一般懲罰區）',
+    ruleNo: '規則 17.1d',
+    penalty: '罰 1 桿，兩種選擇',
+    penaltyFree: false,
+    summary: '黃樁水域只有 2 種選擇，比紅樁少了「側邊丟球」選項，差異記清楚！',
+    steps: [
+      '【選項一】一桿距離罰則：回到上一桿擊球位置重打',
+      '【選項二】後方延伸線丟球：沿球入水點與球洞連線往後延伸，選任一點丟球（無距離限制）',
+    ],
+    warning: '黃樁無法側邊丟球，這是與紅樁最大的差異。很多球友會搞混，裁判要特別注意。',
+  },
+
+  // ── 沙坑 ─────────────────────────────────────
+  bunker: {
+    type: 'question',
+    title: '沙坑內的狀況是？',
+    options: [
+      { id:'bunker_unplayable', label:'想宣告無法打擊（Unplayable）', desc:'球在沙坑內，但不想打，要救濟', icon:'😓' },
+      { id:'bunker_water',      label:'沙坑積水 / 修繕地區',          desc:'下雨積水，或沙坑內有 GUR 標示', icon:'🌊' },
+      { id:'bunker_loose',      label:'沙坑內有樹葉、石頭',           desc:'想知道能不能移除',              icon:'🍂' },
+    ]
+  },
+
+  bunker_unplayable: {
+    type: 'result',
+    title: '沙坑內宣告無法打擊',
+    ruleNo: '規則 19.3',
+    penalty: '罰 1 桿 或 罰 2 桿',
+    penaltyFree: false,
+    summary: '沙坑內的 Unplayable 選擇受限制，大多數選項仍要留在沙坑內。要出沙坑，需額外多罰 1 桿。',
+    steps: [
+      '【罰 1 桿 選項一】回到上一桿擊球位置重打（可能是沙坑外）',
+      '【罰 1 桿 選項二】沿球位與球洞連線向後延伸，在沙坑內丟球',
+      '【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
+      '【罰 2 桿】在沙坑外後方延伸線上任意點丟球（比以上多罰 1 桿）',
+    ],
+    warning: '要離開沙坑需罰 2 桿，相當於比一般 Unplayable 多付一桿代價。',
+  },
+
+  bunker_water: {
+    type: 'result',
+    title: '沙坑積水 / 異常地面狀況',
+    ruleNo: '規則 16.1c',
+    penalty: '免費救濟',
+    penaltyFree: true,
+    summary: '沙坑積水屬於「異常地面狀況」，可免費救濟，但丟球位置必須在沙坑內。',
+    steps: [
+      '確認積水影響到站姿或球的位置',
+      '找到最近救濟點（仍在沙坑內，沒有積水干擾）',
+      '在最近救濟點起一桿距離內丟球（必須留在沙坑內）',
+      '若整個沙坑都積水，可罰 1 桿在沙坑外後方延伸線丟球',
+    ],
+  },
+
+  bunker_loose: {
+    type: 'result',
+    title: '沙坑內的散置障礙物',
+    ruleNo: '規則 15.1',
+    penalty: '無罰桿',
+    penaltyFree: true,
+    summary: '樹葉、石頭、樹枝等天然散置障礙物可以移除，但沙子本身不可移動。',
+    steps: [
+      '樹葉、石頭、樹枝、果實等天然物 → 可以移除',
+      '球場耙子、人工障礙物 → 也可以移除',
+      '若移除時球跟著移動 → 將球放回原位，無罰桿',
+    ],
+    warning: '注意：打球前不可用手或球桿觸碰沙坑的沙（會被判為測試地面）。',
+  },
+
+  // ── Unplayable ────────────────────────────────
+  unplayable: {
+    type: 'result',
+    title: '宣告無法打擊（Unplayable）',
+    ruleNo: '規則 19.2',
+    penalty: '罰 1 桿，三種選擇',
+    penaltyFree: false,
+    summary: '球員可在任何地方（沙坑有特殊規定）自行宣告 Unplayable，不需裁判確認。選哪個選項最合算，由球員自己決定。',
+    steps: [
+      '【選項一】回到上一桿擊球位置重打（一桿距離罰則）',
+      '【選項二】以球位為圓心，兩桿距離內丟球（不可更靠近球洞）',
+      '【選項三】沿球位與球洞連線向後延伸，在線上任一點丟球（無距離限制）',
+    ],
+    warning: '球在樹上也可以宣告 Unplayable！只要認為無法安全打擊就可以宣告，但一律罰 1 桿。',
+  },
+
+  // ── 障礙物 ────────────────────────────────────
+  obstruction: {
+    type: 'question',
+    title: '障礙物的類型？',
+    options: [
+      { id:'movable_obs',   label:'可移動障礙物',     desc:'垃圾桶、飲水機、廣告旗、標示牌等',  icon:'🚮' },
+      { id:'immovable_obs', label:'不可移動障礙物',   desc:'排水溝蓋、涼亭、水泥路徑、固定圍欄', icon:'🏗️' },
+      { id:'gur',           label:'修繕地區（GUR）',  desc:'藍線或 GUR 標示的區域',              icon:'🔵' },
+    ]
+  },
+
+  movable_obs: {
+    type: 'result',
+    title: '可移動障礙物',
+    ruleNo: '規則 15.2',
+    penalty: '無罰桿',
+    penaltyFree: true,
+    summary: '可以直接移開可移動障礙物，不需任何救濟程序，也沒有罰桿。',
+    steps: [
+      '直接移開障礙物',
+      '若移動障礙物時球跟著移動 → 將球放回原位，無罰桿',
+      '若球壓在障礙物下方 → 移開障礙物後，在最近救濟點一桿距離內丟球',
+    ],
+  },
+
+  immovable_obs: {
+    type: 'result',
+    title: '不可移動障礙物',
+    ruleNo: '規則 16.1',
+    penalty: '免費救濟',
+    penaltyFree: true,
+    summary: '如果不可移動障礙物影響站姿或揮桿動作，可免費救濟。視線被擋不算理由。',
+    steps: [
+      '確認干擾：影響到站姿或揮桿（視線被擋不算）',
+      '找到最近救濟點（障礙物無干擾、距球最近、不更靠近球洞的點）',
+      '在最近救濟點起一桿距離內丟球',
+      '丟球後確認站姿、揮桿都不受干擾',
+    ],
+    warning: '只有實體干擾才能免費救濟。若障礙物只擋住視線，不符合免費救濟條件，但可宣告 Unplayable 罰 1 桿。',
+  },
+
+  gur: {
+    type: 'result',
+    title: '修繕地區（GUR / Ground Under Repair）',
+    ruleNo: '規則 16.1',
+    penalty: '免費救濟',
+    penaltyFree: true,
+    summary: '球在 GUR 內，或 GUR 干擾到站姿揮桿，可免費救濟。',
+    steps: [
+      '確認球在 GUR 內（藍線內），或 GUR 干擾到站姿 / 揮桿',
+      '找到最近救濟點（GUR 外、無干擾、不更靠近球洞）',
+      '在最近救濟點一桿距離內丟球',
+    ],
+    warning: '球在 GUR 旁邊，但站姿、揮桿沒有受干擾 → 不符合免費救濟條件。',
+  },
+
+  // ── 錯誤果嶺 ──────────────────────────────────
+  wrong_green: {
+    type: 'result',
+    title: '球在錯誤果嶺上',
+    ruleNo: '規則 13.1f',
+    penalty: '免費救濟（強制必須移出）',
+    penaltyFree: true,
+    summary: '球停在非比賽洞的果嶺上，必須強制移出，不可在錯誤果嶺上推桿。',
+    steps: [
+      '找到最近救濟點（果嶺外、無干擾、不更靠近球洞）',
+      '在最近救濟點一桿距離內丟球',
+      '即使球員想留在原位也不行，這是強制救濟',
+    ],
+    warning: '練習果嶺也算「錯誤果嶺」，球停在上面一樣必須強制移出。',
+  },
+
+  // ── 打錯球 ────────────────────────────────────
+  wrong_ball: {
+    type: 'result',
+    title: '打到別人的球（打錯球）',
+    ruleNo: '規則 6.3c',
+    penalty: '罰 2 桿',
+    penaltyFree: false,
+    summary: '打到別人的球屬於「打錯球」違規，罰 2 桿，必須回去找自己的球繼續打。',
+    steps: [
+      '立即停止用那顆球繼續打',
+      '找到自己的球，從原位繼續打',
+      '計入 2 桿罰桿',
+      '若自己的球找不到 → 適用球找不到的規則（另加 1 桿罰則，回原位）',
+    ],
+    warning: '打球前務必確認球的品牌、號碼及個人識別標記。建議每次開球前用筆在球上畫獨特記號。',
+  },
+
+};
+
+// ─────────────────────────────────────────────
+// 應用程式邏輯
+// ─────────────────────────────────────────────
+let history = [{ id: 'home', label: '首頁' }];
+
+function goHome() {
+  history = [{ id: 'home', label: '首頁' }];
+  render();
+}
+
+function goBack() {
+  if (history.length > 1) { history.pop(); render(); }
+}
+
+function jumpTo(idx) {
+  history = history.slice(0, idx + 1);
+  render();
+}
+
+function navigate(id, label) {
+  history.push({ id, label });
+  render();
+}
+
+function render() {
+  const cur = history[history.length - 1];
+  const node = TREE[cur.id];
+  if (!node) return;
+
+  // --- breadcrumb ---
+  document.getElementById('breadcrumb').innerHTML =
+    history.map((h, i) => {
+      if (i === 0) return `<span class="bc-link" onclick="goHome()">首頁</span>`;
+      const label = h.label.length > 12 ? h.label.slice(0, 12) + '…' : h.label;
+      if (i === history.length - 1) return `<span class="bc-sep">›</span><span style="color:#333">${label}</span>`;
+      return `<span class="bc-sep">›</span><span class="bc-link" onclick="jumpTo(${i})">${label}</span>`;
+    }).join('');
+
+  // --- main content ---
+  const app = document.getElementById('app');
+
+  if (node.type === 'question') {
+    app.innerHTML = `
+      ${history.length > 1 ? `<div class="back-btn" onclick="goBack()">← 返回上一步</div>` : ''}
+      <div class="question-title">${node.title}</div>
+      <div class="options-grid">
+        ${node.options.map(o => `
+          <div class="option-card" onclick="navigate('${o.id}', '${o.label}')">
+            <div class="opt-icon">${o.icon}</div>
+            <div class="opt-text">
+              <h3>${o.label}</h3>
+              ${o.desc ? `<p>${o.desc}</p>` : ''}
+            </div>
+            <div class="opt-arrow">›</div>
+          </div>
+        `).join('')}
+      </div>`;
+
+  } else if (node.type === 'result') {
+    const sc = node.strokeCalc;
+    app.innerHTML = `
+      <div class="back-btn" onclick="goBack()">← 返回上一步</div>
+      <div class="result-card">
+        <div class="result-header">
+          <div class="rule-badge">${node.ruleNo}</div>
+          <h2>${node.title}</h2>
+          <div class="penalty-badge ${node.penaltyFree ? 'penalty-free' : ''}">
+            ${node.penaltyFree ? '✅' : '⚠️'} ${node.penalty}
+          </div>
+        </div>
+        <div class="result-body">
+          <p class="summary-text">${node.summary}</p>
+
+          ${sc ? `
+          <div class="stroke-box">
+            <div class="stroke-box-title">🧮 ${sc.title}</div>
+            ${sc.rows.map(r => `
+              <div class="stroke-row">
+                <span>${r.label}</span>
+                <span class="stroke-val">${r.val}</span>
+              </div>`).join('')}
+          </div>` : ''}
+
+          <div class="section-label">處理步驟</div>
+          <ol class="steps">
+            ${node.steps.map(s => `<li>${s}</li>`).join('')}
+          </ol>
+
+          ${node.warning ? `
+          <div class="warning-box">
+            <span>⚠️</span><span>${node.warning}</span>
+          </div>` : ''}
+
+          ${node.localRule ? `
+          <div class="local-rule-box">
+            <strong>📋 ${node.localRule.title}</strong>
+            ${node.localRule.desc}
+          </div>` : ''}
+
+          <div class="btn-row">
+            <button class="btn btn-secondary" onclick="goBack()">← 返回</button>
+            <button class="btn btn-primary" onclick="goHome()">🏠 查詢其他規則</button>
+          </div>
+        </div>
+      </div>`;
+  }
+}
+
+render();
+</script>
+</body>
+</html>
