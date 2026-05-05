@@ -251,13 +251,17 @@ function t(v) {
 }
 
 const UI = {
-  title:     { zh: '高爾夫規則速查',            en: 'Golf Rules' },
-  subtitle:  { zh: '依據 R&A / USGA 2023 現行規則', en: 'Based on R&A / USGA Rules of Golf 2023' },
-  home:      { zh: '首頁', en: 'Home' },
-  back:      { zh: '← 返回上一步', en: '← Back' },
-  backShort: { zh: '← 返回',       en: '← Back' },
-  homeBtn:   { zh: '🏠 查詢其他規則', en: '🏠 Other Rules' },
-  steps:     { zh: '處理步驟', en: 'Procedure' },
+  title:       { zh: '高爾夫規則速查',               en: 'Golf Rules' },
+  subtitle:    { zh: '依據 R&A / USGA 2023 現行規則', en: 'Based on R&A / USGA Rules of Golf 2023' },
+  home:        { zh: '首頁',          en: 'Home' },
+  back:        { zh: '← 返回上一步', en: '← Back' },
+  backShort:   { zh: '← 返回',       en: '← Back' },
+  homeBtn:     { zh: '🏠 查詢其他規則', en: '🏠 Other Rules' },
+  steps:       { zh: '處理步驟',     en: 'Procedure' },
+  defCore:     { zh: '核心定義',     en: 'Definition' },
+  defPoints:   { zh: '重點說明',     en: 'Key Points' },
+  defMiscon:   { zh: '常見誤解',     en: 'Common Misconception' },
+  glossaryBtn: { zh: '📖 其他名詞',  en: '📖 More Terms' },
 };
 
 function toggleLang() {
@@ -314,6 +318,10 @@ const TREE = {
         label: { zh:'打到別人的球',           en:'Played a Wrong Ball' },
         desc:  { zh:'不小心用別人的球擊打',   en:'Accidentally struck another player\'s ball' },
         icon:'⚠️' },
+      { id:'defs',
+        label: { zh:'📖 名詞解釋',                    en:'📖 Glossary' },
+        desc:  { zh:'高爾夫規則常用名詞，輕鬆增進知識', en:'Golf rules terminology reference' },
+        icon:'📖' },
     ]
   },
 
@@ -776,6 +784,404 @@ const TREE = {
                en:'Always verify ball markings before playing – brand, number, and personal identification marks. Consider adding a unique mark to your ball before each hole.' },
   },
 
+  // ── 名詞解釋 ─────────────────────────────────
+  defs: {
+    type: 'question',
+    title: { zh: '選擇分類', en: 'Select Category' },
+    options: [
+      { id:'defs_area',   label:{zh:'🗺️ 區域 / 地形', en:'Areas & Course Zones'},  desc:{zh:'OB、懲罰區、GUR 等地形名詞',     en:'OB, Penalty Areas, GUR'},          icon:'🗺️' },
+      { id:'defs_ball',   label:{zh:'⚽ 球的狀態',     en:'Ball Status'},           desc:{zh:'比賽球、暫定球、替換球等',       en:'Ball in play, provisional, substituted'}, icon:'🏌️' },
+      { id:'defs_relief', label:{zh:'🔧 救濟術語',     en:'Relief Terms'},          desc:{zh:'救濟點、丟球、罰則等程序名詞',   en:'Nearest point, drop, stroke and distance'}, icon:'🔧' },
+      { id:'defs_action', label:{zh:'📋 動作 / 程序',  en:'Actions & Procedures'},  desc:{zh:'擊球、宣告、標記球位等',         en:'Stroke, announcement, marking'},   icon:'📋' },
+    ]
+  },
+
+  defs_area: {
+    type: 'question',
+    title: { zh: '區域 / 地形', en: 'Areas & Course Zones' },
+    options: [
+      { id:'def_ob',           label:{zh:'出界（Out of Bounds）',      en:'Out of Bounds'},            desc:{zh:'Rule 18.2',  en:'Rule 18.2'},  icon:'🚫' },
+      { id:'def_penarea',      label:{zh:'懲罰區（Penalty Area）',     en:'Penalty Area'},             desc:{zh:'Rule 17',    en:'Rule 17'},    icon:'💧' },
+      { id:'def_gur',          label:{zh:'修繕地區（GUR）',            en:'Ground Under Repair'},      desc:{zh:'Rule 16.1',  en:'Rule 16.1'}, icon:'🔵' },
+      { id:'def_acc',          label:{zh:'異常地面狀況（ACC）',        en:'Abnormal Course Condition'},desc:{zh:'Rule 16',    en:'Rule 16'},    icon:'🌊' },
+      { id:'def_obstruction',  label:{zh:'障礙物（Obstruction）',      en:'Obstruction'},              desc:{zh:'Rule 15',    en:'Rule 15'},    icon:'🚧' },
+      { id:'def_loose',        label:{zh:'散置障礙物',                 en:'Loose Impediment'},         desc:{zh:'Rule 15.1',  en:'Rule 15.1'}, icon:'🍂' },
+      { id:'def_general_area', label:{zh:'一般區域（General Area）',   en:'General Area'},             desc:{zh:'定義',       en:'Definition'}, icon:'⛳' },
+      { id:'def_wrong_green',  label:{zh:'錯誤果嶺（Wrong Green）',    en:'Wrong Green'},              desc:{zh:'Rule 13.1f', en:'Rule 13.1f'},icon:'🟢' },
+    ]
+  },
+
+  defs_ball: {
+    type: 'question',
+    title: { zh: '球的狀態', en: 'Ball Status' },
+    options: [
+      { id:'def_ball_inplay', label:{zh:'比賽球（Ball in Play）',     en:'Ball in Play'},     desc:{zh:'Rule 9',    en:'Rule 9'},    icon:'⛳' },
+      { id:'def_provisional', label:{zh:'暫定球（Provisional Ball）', en:'Provisional Ball'}, desc:{zh:'Rule 18.3', en:'Rule 18.3'}, icon:'🔍' },
+      { id:'def_wrong_ball',  label:{zh:'錯誤球（Wrong Ball）',       en:'Wrong Ball'},        desc:{zh:'Rule 6.3c', en:'Rule 6.3c'}, icon:'⚠️' },
+      { id:'def_substituted', label:{zh:'替換球（Substituted Ball）', en:'Substituted Ball'},  desc:{zh:'Rule 14.3', en:'Rule 14.3'}, icon:'🔄' },
+      { id:'def_identify',    label:{zh:'球的識別',                   en:'Ball Identification'},desc:{zh:'Rule 7.2', en:'Rule 7.2'}, icon:'🏷️' },
+    ]
+  },
+
+  defs_relief: {
+    type: 'question',
+    title: { zh: '救濟術語', en: 'Relief Terms' },
+    options: [
+      { id:'def_npcr',      label:{zh:'最近完全救濟點（NPCR）', en:'Nearest Point of Complete Relief'},desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'📍' },
+      { id:'def_1club',     label:{zh:'一桿距離',               en:'One Club-Length'},               desc:{zh:'量測方式',  en:'How to measure'},icon:'📏' },
+      { id:'def_2club',     label:{zh:'兩桿距離',               en:'Two Club-Lengths'},              desc:{zh:'量測方式',  en:'How to measure'},icon:'📐' },
+      { id:'def_backline',  label:{zh:'後方延伸線',             en:'Back-on-the-Line Relief'},        desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'↩️' },
+      { id:'def_drop',      label:{zh:'丟球（Drop）',           en:'Drop'},                          desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'⬇️' },
+      { id:'def_place',     label:{zh:'放球（Place）',          en:'Place'},                         desc:{zh:'Rule 14.2', en:'Rule 14.2'},icon:'🤲' },
+      { id:'def_sad',       label:{zh:'一桿距離罰則',           en:'Stroke and Distance'},           desc:{zh:'Rule 14.6', en:'Rule 14.6'},icon:'↩️' },
+      { id:'def_free',      label:{zh:'免費救濟（Free Relief）',en:'Free Relief'},                   desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'✅' },
+    ]
+  },
+
+  defs_action: {
+    type: 'question',
+    title: { zh: '動作 / 程序', en: 'Actions & Procedures' },
+    options: [
+      { id:'def_stroke',       label:{zh:'擊球（Stroke）',       en:'Stroke'},             desc:{zh:'Rule 1.3',  en:'Rule 1.3'}, icon:'🏌️' },
+      { id:'def_address',      label:{zh:'定址',                 en:'Addressing the Ball'},desc:{zh:'定義',      en:'Definition'},icon:'🎯' },
+      { id:'def_announce',     label:{zh:'宣告（Announcement）', en:'Announcement'},        desc:{zh:'Rule 18.3', en:'Rule 18.3'},icon:'📢' },
+      { id:'def_mark',         label:{zh:'標記球位',             en:'Mark the Ball'},       desc:{zh:'Rule 14.1', en:'Rule 14.1'},icon:'🪙' },
+      { id:'def_id_procedure', label:{zh:'確認球',               en:'Identify the Ball'},   desc:{zh:'Rule 7.2',  en:'Rule 7.2'}, icon:'🔎' },
+    ]
+  },
+
+  // ── 區域定義 ──────────────────────────────────
+  def_ob: {
+    type: 'definition', ruleNo: 'Rule 18.2',
+    title: { zh: '出界（Out of Bounds）', en: 'Out of Bounds' },
+    definition: { zh: '球場邊界以外的區域，通常以白色樁或白線標示。整顆球都必須越過邊界線才算出界，球若壓線不算出界。', en: '' },
+    details: [
+      { zh: '白樁或白線本身屬於球場內（邊界的內側邊緣才是界線）', en: '' },
+      { zh: '邊界垂直延伸，不因地形高低改變——球飛越 OB 區上方不算出界', en: '' },
+      { zh: '進入 OB 的唯一處理方式：一桿距離罰則（回原位重打 + 罰 1 桿）', en: '' },
+    ],
+    misconception: { zh: '球飛越 OB 區域「上方」不算出界，只看最終靜止位置。球壓在白線上也不算出界。', en: '' },
+  },
+
+  def_penarea: {
+    type: 'definition', ruleNo: 'Rule 17',
+    title: { zh: '懲罰區（Penalty Area）', en: 'Penalty Area' },
+    definition: { zh: '以紅色或黃色樁/線標示的水域或特定地形。球進入後可選擇罰 1 桿救濟，也可以直接在懲罰區內打球（無罰桿）。', en: '' },
+    details: [
+      { zh: '紅樁（側邊懲罰區）：3 種救濟選項，包含側邊兩桿距離丟球', en: '' },
+      { zh: '黃樁（一般懲罰區）：2 種選項，無側邊丟球選項', en: '' },
+      { zh: '球在懲罰區內若能找到且能打，可直接擊球——無罰桿', en: '' },
+    ],
+    misconception: { zh: '以為球進水就一定要救濟——若球在懲罰區內可以找到且能打，完全可以下去打，無罰桿。', en: '' },
+  },
+
+  def_gur: {
+    type: 'definition', ruleNo: 'Rule 16.1',
+    title: { zh: '修繕地區（GUR）', en: 'Ground Under Repair' },
+    definition: { zh: '球場正在修繕或暫時不供比賽使用的區域，通常以藍線或「GUR」標示。球落在內或站姿受干擾，可免費救濟。', en: '' },
+    details: [
+      { zh: '球在 GUR 內，或 GUR 干擾到站姿/揮桿，均可免費救濟', en: '' },
+      { zh: '球場可設定「強制救濟」GUR（必須移出），或「可選擇」GUR（自行決定）', en: '' },
+      { zh: '切土痕、草皮坑洞、泥土堆積等也屬於 GUR（即使沒有標示）', en: '' },
+    ],
+    misconception: { zh: '不是所有 GUR 都強制救濟，需確認當天球場的當地規則。視線被 GUR 阻擋不符合救濟條件，需有實體干擾。', en: '' },
+  },
+
+  def_acc: {
+    type: 'definition', ruleNo: 'Rule 16',
+    title: { zh: '異常地面狀況（ACC）', en: 'Abnormal Course Condition' },
+    definition: { zh: '四種情況的統稱：①動物洞穴/糞便/足跡、②修繕地區（GUR）、③積水（Temporary Water）、④可移動式障礙物（需聲明）。均可取得免費救濟。', en: '' },
+    details: [
+      { zh: '積水：下雨或灌溉後地面上可見的臨時積水，不含懲罰區內', en: '' },
+      { zh: '動物洞穴：動物挖掘的洞、爪印等——鳥類足跡除外', en: '' },
+      { zh: '救濟程序統一：找最近完全救濟點（NPCR），在一桿距離內丟球', en: '' },
+      { zh: '沙坑積水屬於 ACC，但免費救濟須留在沙坑內', en: '' },
+    ],
+    misconception: { zh: '鞋印（非動物）不屬於 ACC，不能據此取得救濟。積水救濟不能跑到沙坑外（除非整個沙坑都積水，此時可罰 1 桿出沙坑）。', en: '' },
+  },
+
+  def_obstruction: {
+    type: 'definition', ruleNo: 'Rule 15',
+    title: { zh: '障礙物（Obstruction）', en: 'Obstruction' },
+    definition: { zh: '球場上人工設置的物體，分為可移動障礙物和不可移動障礙物兩類，處理方式不同。', en: '' },
+    details: [
+      { zh: '可移動障礙物（垃圾桶、廣告旗、飲水機等）：直接移走，無罰桿', en: '' },
+      { zh: '不可移動障礙物（水泥路、涼亭、固定圍欄、電動車道）：實體干擾站姿/揮桿才能免費救濟', en: '' },
+      { zh: '電動車道屬於不可移動障礙物，球在上面或站姿受干擾可免費救濟', en: '' },
+    ],
+    misconception: { zh: '不可移動障礙物只擋住「視線」，不符合免費救濟條件——必須實體干擾到站姿或揮桿動作才行。', en: '' },
+  },
+
+  def_loose: {
+    type: 'definition', ruleNo: 'Rule 15.1',
+    title: { zh: '散置障礙物（Loose Impediment）', en: 'Loose Impediment' },
+    definition: { zh: '自然形成的天然物體，可在任何地方（包含沙坑）免費移除。包含石頭、樹葉、樹枝、動物糞便、昆蟲、果實等。', en: '' },
+    details: [
+      { zh: '2019 版規則起，沙坑內的石頭、樹葉也可以移除（舊規不可）', en: '' },
+      { zh: '沙子本身不是散置障礙物，不可移動', en: '' },
+      { zh: '移除時若球跟著移動，將球放回原位，無罰桿', en: '' },
+      { zh: '露水、仍附在地面上的雜草，不算散置障礙物，不可移除', en: '' },
+    ],
+    misconception: { zh: '很多球友仍有「沙坑什麼都不能動」的舊觀念，但現行規則沙坑內的散置障礙物可以移除。注意：打球前不可觸碰沙面（測試地面，罰桿）。', en: '' },
+  },
+
+  def_general_area: {
+    type: 'definition', ruleNo: '定義',
+    title: { zh: '一般區域（General Area）', en: 'General Area' },
+    definition: { zh: '球場上除發球台、果嶺、沙坑、懲罰區以外的所有地方，包含球道、長草區、樹林、車道等。', en: '' },
+    details: [
+      { zh: '球道只是一般區域中修剪較短的草區，並非獨立的規則分類', en: '' },
+      { zh: '2019 年改版前稱為「Through the Green」，現已改為「General Area」', en: '' },
+      { zh: '球在一般區域通常直接打，遇特殊狀況（積水、障礙物）才取得救濟', en: '' },
+    ],
+    misconception: { zh: '口語常說「球在球道」或「球在長草」，但規則上這些都統稱一般區域，適用相同的基本規則，不因草的高低有不同待遇。', en: '' },
+  },
+
+  def_wrong_green: {
+    type: 'definition', ruleNo: 'Rule 13.1f',
+    title: { zh: '錯誤果嶺（Wrong Green）', en: 'Wrong Green' },
+    definition: { zh: '比賽洞以外的任何推桿果嶺，包括練習果嶺。球停在上面，或站姿受干擾，必須強制移出，不可選擇留下。', en: '' },
+    details: [
+      { zh: '強制救濟：不可選擇在原位打，必須移出', en: '' },
+      { zh: '站姿或揮桿路徑被錯誤果嶺干擾，即使球不在上面，也需救濟', en: '' },
+      { zh: '練習果嶺也算錯誤果嶺，球停上面同樣強制移出', en: '' },
+    ],
+    misconception: { zh: '以為只有球停在果嶺上才需救濟。其實站姿受到干擾也必須移出。這是「強制救濟」，沒有選擇留下的權利。', en: '' },
+  },
+
+  // ── 球的狀態定義 ──────────────────────────────
+  def_ball_inplay: {
+    type: 'definition', ruleNo: 'Rule 9',
+    title: { zh: '比賽球（Ball in Play）', en: 'Ball in Play' },
+    definition: { zh: '從在發球台打出第一桿起，球即為比賽球，直到該洞結束（入洞）或依規定被合法替換/放棄。', en: '' },
+    details: [
+      { zh: '在發球台揮空未打到球，球還沒成為比賽球——仍可重新放球座調整', en: '' },
+      { zh: '打暫定球期間，原球依然是比賽球，直到確認出界或找不到', en: '' },
+      { zh: '比賽球被無故撿起，需放回原位，否則罰 1 桿', en: '' },
+    ],
+    misconception: { zh: '在發球台揮空（沒打到球），球並未成為比賽球，可以重新調整。但若打到球了（哪怕只滾幾公分），球已是比賽球，不可再動。', en: '' },
+  },
+
+  def_provisional: {
+    type: 'definition', ruleNo: 'Rule 18.3',
+    title: { zh: '暫定球（Provisional Ball）', en: 'Provisional Ball' },
+    definition: { zh: '懷疑原球出界或找不到時，在前往搜尋前打出的第二顆球，目的是節省時間、保持球局順暢。', en: '' },
+    details: [
+      { zh: '必須在走向原球可能落點「之前」宣告並打出', en: '' },
+      { zh: '宣告方式：向同組球友明確說「我打個暫定球」', en: '' },
+      { zh: '找到原球在界內 → 暫定球作廢，繼續用原球', en: '' },
+      { zh: '原球確認出界或 3 分鐘找不到 → 暫定球成為比賽球，加罰 1 桿', en: '' },
+      { zh: '走到比暫定球更靠近球洞的地方，原球自動視為找不到', en: '' },
+    ],
+    misconception: { zh: '走到原球落點前方後才想打暫定球——已不能打，只能回去重打。另外，打暫定球前若沒有宣告，第二顆球直接成為 Stroke and Distance 的替換球。', en: '' },
+  },
+
+  def_wrong_ball: {
+    type: 'definition', ruleNo: 'Rule 6.3c',
+    title: { zh: '錯誤球（Wrong Ball）', en: 'Wrong Ball' },
+    definition: { zh: '比賽中打了不屬於自己的球，屬於違規，罰 2 桿（比桿賽）。打錯球的那幾桿不計入成績，但罰桿要加計。', en: '' },
+    details: [
+      { zh: '打錯球後：立即停止，找到自己的球從原位繼續打', en: '' },
+      { zh: '若自己的球找不到，另依「球找不到」的規則處理（再加 1 桿罰則）', en: '' },
+      { zh: '比洞賽：打錯球輸一洞（立即效力）', en: '' },
+    ],
+    misconception: { zh: '打錯球的桿數也要算——錯！只有 2 桿罰桿，打錯球的那幾桿不計入成績。預防：開球前在球上做個人識別記號。', en: '' },
+  },
+
+  def_substituted: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '替換球（Substituted Ball）', en: 'Substituted Ball' },
+    definition: { zh: '在規則允許的情況下，以另一顆球替換原來的比賽球。未經規則允許不可任意替換。', en: '' },
+    details: [
+      { zh: '合法替換：球損壞（切口或裂開，非一般磨損）、OB/找不到救濟、嵌入球救濟等', en: '' },
+      { zh: '不可任意換球：球被泥土弄髒，果嶺外不能據此換球', en: '' },
+      { zh: '在不允許情況下替換，罰 1 桿，但必須繼續用新球（不回頭用舊球）', en: '' },
+    ],
+    misconception: { zh: '以為球被泥土弄髒可以換球——果嶺外的球不能因此替換（果嶺上可以擦拭）。只有規則明確允許的情況才能替換球。', en: '' },
+  },
+
+  def_identify: {
+    type: 'definition', ruleNo: 'Rule 7.2',
+    title: { zh: '球的識別（Ball Identification）', en: 'Ball Identification' },
+    definition: { zh: '確認某顆球是否為自己比賽球的觀念與責任。打球前確認球身份是球員的義務。', en: '' },
+    details: [
+      { zh: '強烈建議在球上做個人識別標記（用筆畫點或線），品牌/號碼相同的球非常多', en: '' },
+      { zh: '搜尋時限 3 分鐘，從「開始積極搜尋」起算（不是從落點時起算）', en: '' },
+      { zh: '超過 3 分鐘找到的球也不能用，球視為丟失', en: '' },
+      { zh: '無法識別球的身份 → 視為找不到，適用一桿距離罰則', en: '' },
+    ],
+    misconception: { zh: '以為「看起來像自己的球」就可以打——若無法明確識別（沒有個人標記、品牌號碼相同），不能打那顆球。', en: '' },
+  },
+
+  // ── 救濟術語定義 ──────────────────────────────
+  def_npcr: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '最近完全救濟點（NPCR）', en: 'Nearest Point of Complete Relief' },
+    definition: { zh: '在需要免費救濟時，距離原球最近、完全不受干擾的點，且此點不能比原球更靠近球洞。', en: '' },
+    details: [
+      { zh: '「完全救濟」意指站姿和揮桿路徑都不受干擾，不只是球的位置', en: '' },
+      { zh: '救濟點可能在長草或不利位置，球員無權選擇「更好的位置」', en: '' },
+      { zh: '找到 NPCR 後，在 NPCR 起一桿距離內丟球（同樣不更靠近球洞）', en: '' },
+      { zh: '建議用球桿模擬站姿和揮桿動作，確認真正完全不受干擾的位置', en: '' },
+    ],
+    misconception: { zh: '很多球友以為免費救濟可以選「最有利的位置」，但規則要求找最近的完全救濟點，就算那個點在長草也一樣。', en: '' },
+  },
+
+  def_1club: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '一桿距離（One Club-Length）', en: 'One Club-Length' },
+    definition: { zh: '以球員球包內最長的球桿（通常是球道木）量測的距離，作為丟球區域的範圍。以救濟點為圓心，最長球桿為半徑的圓形範圍。', en: '' },
+    details: [
+      { zh: '用包包裡最長的球桿量，量完後可換任何球桿打', en: '' },
+      { zh: '丟球後，球必須靜止在此圓形範圍內，且不更靠近球洞', en: '' },
+      { zh: '若球滾出範圍，需重丟（最多兩次機會）', en: '' },
+    ],
+    misconception: { zh: '以為要用推桿量，或以為一桿距離是固定的長度。應用包包裡最長的球桿，每個人不一樣長。', en: '' },
+  },
+
+  def_2club: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '兩桿距離（Two Club-Lengths）', en: 'Two Club-Lengths' },
+    definition: { zh: '以最長球桿量取兩倍的距離，適用於紅樁側邊救濟、Unplayable 的兩桿距離選項等情況。', en: '' },
+    details: [
+      { zh: '同樣以包包裡最長的球桿為準，量兩次', en: '' },
+      { zh: '適用情況：紅樁懲罰區側邊丟球、無法打擊（Unplayable）的兩桿距離選項', en: '' },
+      { zh: '同樣不可更靠近球洞，球靜止後需在圓形範圍內', en: '' },
+    ],
+    misconception: { zh: '兩桿距離同樣不可更靠近球洞，這一點和一桿距離相同，很多球友容易忽略。', en: '' },
+  },
+
+  def_backline: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '後方延伸線（Back-on-the-Line）', en: 'Back-on-the-Line Relief' },
+    definition: { zh: '以球洞和基準點（如球入水點）連線，向基準點後方無限延伸的一條線。可在線上任意一點丟球，無距離限制。', en: '' },
+    details: [
+      { zh: '只能在那條線上丟，不是「線的附近」', en: '' },
+      { zh: '丟球後球可以滾動，滾動範圍在一桿距離內且不更靠近球洞即可', en: '' },
+      { zh: '適用情況：黃樁水域、紅樁水域（選項之一）、沙坑 Unplayable（需留沙坑內）', en: '' },
+      { zh: '理論上可以退到幾百碼後再丟球（無距離限制）', en: '' },
+    ],
+    misconception: { zh: '可以在線的「附近」任意找好位置丟球——不行，必須精確在那條延伸線上。若丟偏了，從錯誤位置打，可能被罰桿。', en: '' },
+  },
+
+  def_drop: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '丟球（Drop）', en: 'Drop' },
+    definition: { zh: '救濟時將球從膝蓋高度放落的程序（2019 版現行規則）。球員需站在救濟區域內或外，使球自然落下並靜止在救濟區域內。', en: '' },
+    details: [
+      { zh: '2019 年前舊規是從肩膀高度丟，現在改為膝蓋高度', en: '' },
+      { zh: '球必須在救濟區域內靜止，否則需重丟（最多兩次）', en: '' },
+      { zh: '第一次滾出去 → 重丟；第二次還滾出去 → 改在第二次球靜止處「放球」', en: '' },
+      { zh: '丟球時球不能碰到球員身體（包括腳），否則需重丟（無罰桿）', en: '' },
+    ],
+    misconception: { zh: '還在用肩膀高度丟球的資深球友注意：2019 年規則已改為膝蓋高度，這是目前的正確做法。', en: '' },
+  },
+
+  def_place: {
+    type: 'definition', ruleNo: 'Rule 14.2',
+    title: { zh: '放球（Place）', en: 'Place' },
+    definition: { zh: '將球直接放到指定位置的程序，與「丟球」不同，不需從高處落下，手動設置在指定點。', en: '' },
+    details: [
+      { zh: '使用時機一：果嶺上提球後放回原位', en: '' },
+      { zh: '使用時機二：丟球兩次後球仍滾出救濟區，改在第二次球靜止處放球', en: '' },
+      { zh: '使用時機三：球被移動後需還原位置', en: '' },
+      { zh: '放球後若球無法靜止（坡度太大）：選附近最近能靜止的點放球', en: '' },
+    ],
+    misconception: { zh: '果嶺外的救濟都是「丟球」而非放球，除非丟了兩次都滾出去，才改用放球。很多球友在果嶺外也用放球，這是不正確的程序。', en: '' },
+  },
+
+  def_sad: {
+    type: 'definition', ruleNo: 'Rule 14.6',
+    title: { zh: '一桿距離罰則（Stroke and Distance）', en: 'Stroke and Distance' },
+    definition: { zh: '回到原來的擊球位置重打，並加計 1 桿罰桿。出界和球找不到的標準處理方式，是所有救濟選項中最嚴格的。', en: '' },
+    details: [
+      { zh: '「Stroke」= 罰的 1 桿；「Distance」= 你走回去重打的路程距離', en: '' },
+      { zh: 'OB、找不到球：強制使用（無其他選項，除非球場有適用 Local Rule E-5）', en: '' },
+      { zh: '懲罰區、Unplayable：一桿距離罰則是選項之一，但通常有更省桿的選擇', en: '' },
+      { zh: '回到原位時若位置不確定，在最接近原始擊球點的合理位置一桿距離內丟球', en: '' },
+    ],
+    misconception: { zh: '很多球友聽說 Local Rule E-5 後，以為出界都可以在球道丟球。E-5 並非所有球場都有適用，使用前必須確認當天的當地規則。', en: '' },
+  },
+
+  def_free: {
+    type: 'definition', ruleNo: 'Rule 14.3',
+    title: { zh: '免費救濟（Free Relief）', en: 'Free Relief' },
+    definition: { zh: '不需加計罰桿的救濟，適用於異常地面狀況（積水、GUR、動物洞）和不可移動障礙物干擾等情況。', en: '' },
+    details: [
+      { zh: '免費不代表沒有限制——必須嚴格按照找 NPCR、在一桿距離內丟球的程序操作', en: '' },
+      { zh: '常見免費救濟：不可移動障礙物（實體干擾）、GUR、積水、動物洞穴、錯誤果嶺', en: '' },
+      { zh: '程序錯誤（例如丟到更靠近球洞的地方）可能被罰桿', en: '' },
+    ],
+    misconception: { zh: '以為免費救濟可以選任意好位置——必須按最近完全救濟點（NPCR）的規則走，就算那個點在長草也一樣。', en: '' },
+  },
+
+  // ── 動作 / 程序定義 ──────────────────────────
+  def_stroke: {
+    type: 'definition', ruleNo: 'Rule 1.3',
+    title: { zh: '擊球（Stroke）', en: 'Stroke' },
+    definition: { zh: '向球揮桿且有打球意圖的動作，即算一桿。意圖是判斷關鍵，不需要真的打到球。', en: '' },
+    details: [
+      { zh: '上桿過程不算桿，下桿完成才計', en: '' },
+      { zh: '空揮：有揮桿意圖但沒打到球——算一桿', en: '' },
+      { zh: '下桿中途停下且未打到球——不算桿', en: '' },
+      { zh: '用推桿推、刮球：只要有意圖，均算一桿', en: '' },
+      { zh: '風吹球動、或球自然移動——不算桿', en: '' },
+    ],
+    misconception: { zh: '「沒打到球就不算桿」——錯！有揮桿意圖但打空（whiff），依然計算為一桿。這是很多球友認知錯誤的規則。', en: '' },
+  },
+
+  def_address: {
+    type: 'definition', ruleNo: '定義',
+    title: { zh: '定址（Addressing the Ball）', en: 'Addressing the Ball' },
+    definition: { zh: '球員站定擊球準備、接近球位的動作。2019 版規則已取消「定址就算移動球員責任」的舊規，現行規則更合理。', en: '' },
+    details: [
+      { zh: '現行規則：定址後若球自然移動（風吹、坡度），無罰桿，從新位置打', en: '' },
+      { zh: '若判定是球員的動作導致球移動（如碰到球），罰 1 桿，球放回原位', en: '' },
+      { zh: '沙坑和懲罰區內：擊球前不可將球桿觸碰地面（測試地面，罰桿）', en: '' },
+    ],
+    misconception: { zh: '舊規球員注意：2019 年以前，定址後球若移動自動罰桿。現行規則已取消此規定，自然移動無罰桿。很多資深球友仍沿用舊觀念。', en: '' },
+  },
+
+  def_announce: {
+    type: 'definition', ruleNo: 'Rule 18.3',
+    title: { zh: '宣告（Announcement）', en: 'Announcement' },
+    definition: { zh: '在採取特定行動前，向同組球友明確告知意圖的口頭聲明。最常見於打暫定球前，不宣告可能影響後續規則效力。', en: '' },
+    details: [
+      { zh: '打暫定球前必須宣告，不宣告則第二顆球直接成為「一桿距離罰則」的替換球', en: '' },
+      { zh: '宣告不需要特定格式，只要清楚說明意圖即可（中文宣告完全有效）', en: '' },
+      { zh: '宣告對象：同組球友，或在場的球僮/裁判', en: '' },
+      { zh: '其他需宣告的情況：宣告 Unplayable、比洞賽宣告放棄該洞等', en: '' },
+    ],
+    misconception: { zh: '以為宣告要用英文或有固定說法。用中文說「我打個暫定球」完全有效，重點是讓同組球友清楚知道你的意圖。', en: '' },
+  },
+
+  def_mark: {
+    type: 'definition', ruleNo: 'Rule 14.1',
+    title: { zh: '標記球位（Mark the Ball）', en: 'Mark the Ball' },
+    definition: { zh: '在提球前，以球位標記（硬幣或球位標）放置在球正後方標示球的位置，確保提球後可準確放回原位。', en: '' },
+    details: [
+      { zh: '球位標放在球的「後方」（更遠離球洞的那一側），不可放在前方', en: '' },
+      { zh: '果嶺上提球前必須標記，否則罰 1 桿', en: '' },
+      { zh: '若標記影響他人推桿路線，可要求移動標記（往旁邊一桿距離）', en: '' },
+      { zh: '移動後的標記，放球前需移回原位，忘了移回罰 1 桿', en: '' },
+    ],
+    misconception: { zh: '球位標放在球的「旁邊」就好——不行，規則要求放在球的後方（更遠離球洞的那側），這樣放回球時位置才準確。', en: '' },
+  },
+
+  def_id_procedure: {
+    type: 'definition', ruleNo: 'Rule 7.2',
+    title: { zh: '確認球（程序）', en: 'Identify the Ball – Procedure' },
+    definition: { zh: '當球的身份不確定時，球員可依照程序翻動球確認是否為自己的球。確認後需放回原位。', en: '' },
+    details: [
+      { zh: '確認前：告知同組球友你要確認球', en: '' },
+      { zh: '若泥沙遮住標記：可輕輕清潔到看到標記為止（非完整清潔）', en: '' },
+      { zh: '確認後：必須放回原來的位置和狀態，否則罰 1 桿', en: '' },
+      { zh: '若確認後發現是錯誤球：不要打，繼續找自己的球', en: '' },
+      { zh: '果嶺上提球：可完整清潔（例外情況）', en: '' },
+    ],
+    misconception: { zh: '翻球確認後以為可以完全清潔球——只能清到看到識別標記為止。果嶺外完整清潔球，罰 1 桿。', en: '' },
+  },
+
 };
 
 // ─────────────────────────────────────────────
@@ -836,7 +1242,8 @@ function render() {
       ${history.length > 1 ? `<div class="back-btn" onclick="goBack()">${t(UI.back)}</div>` : ''}
       <div class="question-title">${t(node.title)}</div>
       <div class="options-grid">
-        ${node.options.map(o => `
+        ${node.options.map((o, i) => `
+          ${cur.id === 'home' && i === 7 ? '<div style="margin:4px 0;border-top:1.5px dashed #c8e0c8;"></div>' : ''}
           <div class="option-card" onclick="navigate('${o.id}')">
             <div class="opt-icon">${o.icon}</div>
             <div class="opt-text">
@@ -845,6 +1252,36 @@ function render() {
             </div>
             <div class="opt-arrow">›</div>
           </div>`).join('')}
+      </div>`;
+
+  } else if (node.type === 'definition') {
+    app.innerHTML = `
+      <div class="back-btn" onclick="goBack()">${t(UI.back)}</div>
+      <div class="result-card">
+        <div class="result-header">
+          <div class="rule-badge">${node.ruleNo}</div>
+          <h2>${t(node.title)}</h2>
+        </div>
+        <div class="result-body">
+          <div class="section-label">${t(UI.defCore)}</div>
+          <p class="summary-text">${t(node.definition)}</p>
+
+          ${node.details && node.details.length ? `
+          <div class="section-label">${t(UI.defPoints)}</div>
+          <ol class="steps">
+            ${node.details.map(d => `<li>${t(d)}</li>`).join('')}
+          </ol>` : ''}
+
+          ${node.misconception ? `
+          <div class="warning-box">
+            <span>💡</span><span><strong>${t(UI.defMiscon)}：</strong>${t(node.misconception)}</span>
+          </div>` : ''}
+
+          <div class="btn-row">
+            <button class="btn btn-secondary" onclick="goBack()">${t(UI.backShort)}</button>
+            <button class="btn btn-primary" onclick="navigate('defs')">${t(UI.glossaryBtn)}</button>
+          </div>
+        </div>
       </div>`;
 
   } else if (node.type === 'result') {
