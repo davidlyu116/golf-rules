@@ -246,7 +246,7 @@
 let lang = localStorage.getItem('golf-lang') || 'zh';
 
 function t(v) {
-  if (v && typeof v === 'object' && ('zh' in v || 'en' in v)) return v[lang] ?? v.zh;
+  if (v && typeof v === 'object' && ('zh' in v || 'en' in v)) return v[lang] || v.zh;
   return v;
 }
 
