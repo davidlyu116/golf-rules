@@ -300,7 +300,7 @@ const TREE = {
         icon:'🚧' },
       { id:'penalty_area',
         label: { zh:'球進入水域',            en:'Ball in Penalty Area (Water)' },
-        desc:  { zh:'進入紅樁或黃樁標示的水域懲罰區', en:'Ball entered red or yellow stake area' },
+        desc:  { zh:'進入紅樁或黃樁標示的處罰區', en:'Ball entered red or yellow stake area' },
         icon:'💧' },
       { id:'bunker',
         label: { zh:'球在沙坑',              en:'Ball in Bunker' },
@@ -409,7 +409,7 @@ const TREE = {
                en:'If you played a provisional ball, it automatically becomes the ball in play (also your 3rd stroke). No further announcement needed.' },
     localRule: {
       title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
-      desc:  { zh:'可不走回發球台，在球道上從出界點兩桿距離內丟球，但罰 2 桿（打第 4 桿）。請先向球場工作人員確認是否適用。',
+      desc:  { zh:'可不走回發球台，在球道上從出界點兩桿距離內拋球，但罰 2 桿（打第 4 桿）。請先向球場工作人員確認是否適用。',
                en:'You may drop in the fairway within 2 club-lengths of where the ball crossed the boundary, with a 2-stroke penalty (playing 4th). Confirm with the club before use.' }
     }
   },
@@ -434,14 +434,14 @@ const TREE = {
     steps: [
       { zh:'確認球在 OB 白線外側',                              en:'Confirm the ball is out of bounds' },
       { zh:'回到上一桿的擊球位置',                              en:'Return to where the previous stroke was played' },
-      { zh:'在距原擊球點一桿距離內（不更靠近球洞）丟球',        en:'Drop within 1 club-length of the original spot (no closer to the hole)' },
+      { zh:'在距原擊球點一桿距離內（不更靠近球洞）拋球',        en:'Drop within 1 club-length of the original spot (no closer to the hole)' },
       { zh:'重新打，計桿為原來桿數 +2',                         en:'Play the ball; count = original stroke number +2' },
     ],
     warning: { zh:'若不確定原位在哪裡，以最接近原始擊球點的合理位置為準，同組球友可協助確認。',
                en:'If uncertain of the exact original spot, use the nearest reasonable point. Fellow-competitors may assist in confirming.' },
     localRule: {
       title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
-      desc:  { zh:'可在球道上、從球飛越邊界點旁兩桿距離內丟球，罰 2 桿。比走回去省時許多。',
+      desc:  { zh:'可在球道上、從球飛越邊界點旁兩桿距離內拋球，罰 2 桿。比走回去省時許多。',
                en:'Drop in the fairway within 2 club-lengths of where ball crossed the boundary, 2-stroke penalty. Much more time-efficient than returning.' }
     }
   },
@@ -490,7 +490,7 @@ const TREE = {
                en:'Lesson: Whenever there is any doubt, announce a provisional ball before walking forward. One sentence saves the long walk back.' },
     localRule: {
       title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
-      desc:  { zh:'可在球道上丟球，罰 2 桿，不需走回原位。但要先確認球場是否適用。',
+      desc:  { zh:'可在球道上拋球，罰 2 桿，不需走回原位。但要先確認球場是否適用。',
                en:'Drop in the fairway, 2-stroke penalty, no need to return. Confirm with the club before using.' }
     }
   },
@@ -522,7 +522,7 @@ const TREE = {
                en:'The 3-minute limit is strict – a ball found after time expires cannot be played. Play a provisional ball next time before searching.' },
     localRule: {
       title: { zh:'本地規則 E-5（若球場有適用）', en:'Local Rule E-5 (if in effect)' },
-      desc:  { zh:'可在球道上、距球消失點兩桿距離內丟球，罰 2 桿，不需走回去。',
+      desc:  { zh:'可在球道上、距球消失點兩桿距離內拋球，罰 2 桿，不需走回去。',
                en:'Drop in the fairway within 2 club-lengths of where ball disappeared, 2-stroke penalty, no need to walk back.' }
     }
   },
@@ -534,50 +534,50 @@ const TREE = {
     options: [
       { id:'red_stake',
         label: { zh:'紅色樁 / 紅線', en:'Red Stakes / Red Line' },
-        desc:  { zh:'側邊水域懲罰區（Lateral Penalty Area）', en:'Lateral Penalty Area' },
+        desc:  { zh:'側邊處罰區（Lateral Penalty Area）', en:'Lateral Penalty Area' },
         icon:'🔴' },
       { id:'yellow_stake',
         label: { zh:'黃色樁 / 黃線', en:'Yellow Stakes / Yellow Line' },
-        desc:  { zh:'一般水域懲罰區（Penalty Area）', en:'General Penalty Area' },
+        desc:  { zh:'一般處罰區（Penalty Area）', en:'General Penalty Area' },
         icon:'🟡' },
     ]
   },
 
   red_stake: {
     type: 'result',
-    title:     { zh:'紅樁水域（側邊懲罰區）',            en:'Red Stake – Lateral Penalty Area' },
+    title:     { zh:'紅樁水域（紅色處罰區）',            en:'Red Stake – Lateral Penalty Area' },
     ruleNo:    'Rule 17.1d',
     penalty:   { zh:'罰 1 桿，三種選擇',                  en:'1 Stroke Penalty – 3 Options' },
     penaltyFree: false,
-    summary:   { zh:'紅樁水域有 3 種脫困方式，最常用的是「側邊兩桿距離丟球」，最省時。',
+    summary:   { zh:'紅樁水域有 3 種脫困方式，最常用的是「側邊兩桿距離拋球」，最省時。',
                  en:'A lateral penalty area offers 3 relief options. The most time-efficient is the lateral 2-club-length drop.' },
     steps: [
       { zh:'【選項一】一桿距離罰則：回到上一桿擊球位置重打',
         en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
-      { zh:'【選項二】後方延伸線丟球：沿球入水點與球洞的連線往後延伸，選任一點丟球',
+      { zh:'【選項二】後方延伸線拋球：沿球入水點與球洞的連線往後延伸，選任一點拋球',
         en:'[Option 2] Back-on-the-line: Drop on a line extending back from the hole through the point where ball last crossed the margin' },
-      { zh:'【選項三】側邊兩桿距離丟球：從球入水點兩側，各兩桿距離內找合適位置丟球（最常用）',
+      { zh:'【選項三】側邊兩桿距離拋球：從球入水點兩側，各兩桿距離內找合適位置拋球（最常用）',
         en:'[Option 3] Lateral relief: Drop within 2 club-lengths of either side of where ball last crossed the margin (most common)' },
     ],
-    warning: { zh:'所有丟球位置都不可比球入水點更靠近球洞。',
+    warning: { zh:'所有拋球位置都不可比球入水點更靠近球洞。',
                en:'All drop areas must not be closer to the hole than where the ball last crossed the penalty area margin.' },
   },
 
   yellow_stake: {
     type: 'result',
-    title:     { zh:'黃樁水域（一般懲罰區）',            en:'Yellow Stake – General Penalty Area' },
+    title:     { zh:'黃樁水域（黃色處罰區）',            en:'Yellow Stake – General Penalty Area' },
     ruleNo:    'Rule 17.1d',
     penalty:   { zh:'罰 1 桿，兩種選擇',                  en:'1 Stroke Penalty – 2 Options' },
     penaltyFree: false,
-    summary:   { zh:'黃樁水域只有 2 種選擇，比紅樁少了「側邊丟球」選項，差異記清楚！',
+    summary:   { zh:'黃樁水域只有 2 種選擇，比紅樁少了「側邊拋球」選項，差異記清楚！',
                  en:'A general penalty area only allows 2 options – no lateral drop. This is the key difference from red stakes.' },
     steps: [
       { zh:'【選項一】一桿距離罰則：回到上一桿擊球位置重打',
         en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
-      { zh:'【選項二】後方延伸線丟球：沿球入水點與球洞連線往後延伸，選任一點丟球（無距離限制）',
+      { zh:'【選項二】後方延伸線拋球：沿球入水點與球洞連線往後延伸，選任一點拋球（無距離限制）',
         en:'[Option 2] Back-on-the-line: Drop anywhere on the line extending back from the hole through the entry point (no distance limit)' },
     ],
-    warning: { zh:'黃樁無法側邊丟球，這是與紅樁最大的差異。很多球友會搞混，裁判要特別注意。',
+    warning: { zh:'黃樁無法側邊拋球，這是與紅樁最大的差異。很多球友會搞混，裁判要特別注意。',
                en:'Lateral drop is NOT available for yellow stakes. This is the most common confusion between red and yellow penalty areas.' },
   },
 
@@ -612,11 +612,11 @@ const TREE = {
     steps: [
       { zh:'【罰 1 桿 選項一】回到上一桿擊球位置重打（可能是沙坑外）',
         en:'[1 Stroke – Option 1] Stroke and Distance: Return to previous spot (may be outside bunker)' },
-      { zh:'【罰 1 桿 選項二】沿球位與球洞連線向後延伸，在沙坑內丟球',
+      { zh:'【罰 1 桿 選項二】沿球位與球洞連線向後延伸，在沙坑內拋球',
         en:'[1 Stroke – Option 2] Back-on-the-line relief within the bunker' },
-      { zh:'【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
+      { zh:'【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內拋球（不更靠近球洞）',
         en:'[1 Stroke – Option 3] Drop within 2 club-lengths within the bunker (not nearer the hole)' },
-      { zh:'【罰 2 桿】在沙坑外後方延伸線上任意點丟球（比以上多罰 1 桿）',
+      { zh:'【罰 2 桿】在沙坑外後方延伸線上任意點拋球（比以上多罰 1 桿）',
         en:'[2 Strokes] Drop outside the bunker on the back-on-the-line reference (1 extra stroke to escape)' },
     ],
     warning: { zh:'要離開沙坑需罰 2 桿，相當於比一般 Unplayable 多付一桿代價。',
@@ -629,13 +629,13 @@ const TREE = {
     ruleNo:    'Rule 16.1c',
     penalty:   { zh:'免罰脫困',                         en:'Free Relief' },
     penaltyFree: true,
-    summary:   { zh:'沙坑積水屬於「異常地面狀況」，可免罰脫困，但丟球位置必須在沙坑內。',
+    summary:   { zh:'沙坑積水屬於「異常地面狀況」，可免罰脫困，但拋球位置必須在沙坑內。',
                  en:'Standing water in a bunker is an Abnormal Course Condition. Free relief is available, but the drop must remain within the bunker.' },
     steps: [
       { zh:'確認積水影響到站姿或球的位置',                en:'Confirm the standing water interferes with your stance or ball position' },
       { zh:'找到最近脫困點（仍在沙坑內，沒有積水干擾）',   en:'Find the nearest point of complete relief within the bunker (no interference)' },
-      { zh:'在最近脫困點起一桿距離內丟球（必須留在沙坑內）', en:'Drop within 1 club-length of that point (must stay in the bunker)' },
-      { zh:'若整個沙坑都積水，可罰 1 桿在沙坑外後方延伸線丟球',
+      { zh:'在最近脫困點起一桿距離內拋球（必須留在沙坑內）', en:'Drop within 1 club-length of that point (must stay in the bunker)' },
+      { zh:'若整個沙坑都積水，可罰 1 桿在沙坑外後方延伸線拋球',
         en:'If the entire bunker is flooded, you may take relief outside the bunker with a 1-stroke penalty on the back-on-the-line reference' },
     ],
   },
@@ -669,9 +669,9 @@ const TREE = {
     steps: [
       { zh:'【選項一】回到上一桿擊球位置重打（一桿距離罰則）',
         en:'[Option 1] Stroke and Distance: Return to where previous stroke was played' },
-      { zh:'【選項二】以球位為圓心，兩桿距離內丟球（不可更靠近球洞）',
+      { zh:'【選項二】以球位為圓心，兩桿距離內拋球（不可更靠近球洞）',
         en:'[Option 2] Drop within 2 club-lengths of the ball\'s position (not nearer the hole)' },
-      { zh:'【選項三】沿球位與球洞連線向後延伸，在線上任一點丟球（無距離限制）',
+      { zh:'【選項三】沿球位與球洞連線向後延伸，在線上任一點拋球（無距離限制）',
         en:'[Option 3] Drop anywhere on a line extending back from the hole through the ball\'s position (no distance limit)' },
     ],
     warning: { zh:'球在樹上也可以宣告 Unplayable！只要認為無法安全打擊就可以宣告，但一律罰 1 桿。',
@@ -709,7 +709,7 @@ const TREE = {
     steps: [
       { zh:'直接移開障礙物',                                en:'Simply remove the obstruction' },
       { zh:'若移動障礙物時球跟著移動 → 將球放回原位，無罰桿', en:'If ball moves when removing obstruction → replace ball in original position, no penalty' },
-      { zh:'若球壓在障礙物下方 → 移開障礙物後，在最近脫困點一桿距離內丟球',
+      { zh:'若球壓在障礙物下方 → 移開障礙物後，在最近脫困點一桿距離內拋球',
         en:'If ball lies in or under obstruction → remove it and drop within 1 club-length of nearest point of relief' },
     ],
   },
@@ -727,8 +727,8 @@ const TREE = {
         en:'Confirm physical interference: stance or area of intended swing (not just line of sight)' },
       { zh:'找到最近脫困點（障礙物無干擾、距球最近、不更靠近球洞的點）',
         en:'Find the nearest point of complete relief (closest point with no interference, not nearer the hole)' },
-      { zh:'在最近脫困點起一桿距離內丟球',                  en:'Drop within 1 club-length of that nearest point' },
-      { zh:'丟球後確認站姿、揮桿都不受干擾',               en:'After dropping, verify stance and swing area are both free of interference' },
+      { zh:'在最近脫困點起一桿距離內拋球',                  en:'Drop within 1 club-length of that nearest point' },
+      { zh:'拋球後確認站姿、揮桿都不受干擾',               en:'After dropping, verify stance and swing area are both free of interference' },
     ],
     warning: { zh:'只有實體干擾才能免罰脫困。若障礙物只擋住視線，不符合免罰脫困條件，但可宣告 Unplayable 罰 1 桿。',
                en:'Only physical interference qualifies for free relief. Line-of-sight obstruction does not – but you may declare unplayable (1-stroke penalty).' },
@@ -747,7 +747,7 @@ const TREE = {
         en:'Confirm ball is in GUR or GUR interferes with stance/swing' },
       { zh:'找到最近脫困點（GUR 外、無干擾、不更靠近球洞）',
         en:'Find nearest point of complete relief (outside GUR, no interference, not nearer hole)' },
-      { zh:'在最近脫困點一桿距離內丟球',                   en:'Drop within 1 club-length of that point' },
+      { zh:'在最近脫困點一桿距離內拋球',                   en:'Drop within 1 club-length of that point' },
     ],
     warning: { zh:'球在 GUR 旁邊，但站姿、揮桿沒有受干擾 → 不符合免罰脫困條件。',
                en:'If GUR is adjacent to your ball but does not physically affect your stance or swing, free relief does not apply.' },
@@ -765,7 +765,7 @@ const TREE = {
     steps: [
       { zh:'找到最近脫困點（果嶺外、無干擾、不更靠近球洞）',
         en:'Find the nearest point of complete relief off the putting green (not nearer the hole)' },
-      { zh:'在最近脫困點一桿距離內丟球',                    en:'Drop within 1 club-length of that point' },
+      { zh:'在最近脫困點一桿距離內拋球',                    en:'Drop within 1 club-length of that point' },
       { zh:'即使球員想留在原位也不行，這是強制脫困',         en:'This is mandatory – the player cannot choose to play from the wrong green' },
     ],
     warning: { zh:'練習果嶺也算「錯誤果嶺」，球停在上面一樣必須強制移出。',
@@ -912,9 +912,9 @@ const TREE = {
         en: 'Confirm the ball is in its own pitch-mark (not just resting in an old hole)' },
       { zh: '脫困參考點：球嵌入處的「正後方」——沿球洞與嵌入球的連線往後（非側邊）',
         en: 'Reference point: directly behind the embedded position – on the line from the hole through the ball (not to the side)' },
-      { zh: '在脫困參考點起一桿距離內丟球，不更靠近球洞',
+      { zh: '在脫困參考點起一桿距離內拋球，不更靠近球洞',
         en: 'Drop within 1 club-length of that reference point, not nearer the hole' },
-      { zh: '丟球落點必須在一般區域內（不可落在沙坑或懲罰區）',
+      { zh: '拋球落點必須在一般區域內（不可落在沙坑或處罰區）',
         en: 'Ball must come to rest in the general area (not in a bunker or penalty area)' },
     ],
     warning: { zh: '脫困參考點在球的「正後方」，不是旁邊——這是很多人搞錯的地方。沙坑內的嵌入球不適用本條免罰脫困。',
@@ -932,14 +932,14 @@ const TREE = {
     steps: [
       { zh: '【選項一】直接打——用大開口沙坑桿爆沙打出',
         en: '[Option 1] Play it as it lies – explosion shot with a high-lofted wedge' },
-      { zh: '【罰 1 桿 選項二】沿球位與球洞連線往後，在沙坑內後方延伸線上丟球',
+      { zh: '【罰 1 桿 選項二】沿球位與球洞連線往後，在沙坑內後方延伸線上拋球',
         en: '[1 Stroke – Option 2] Drop on the back-on-the-line within the bunker' },
-      { zh: '【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
+      { zh: '【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內拋球（不更靠近球洞）',
         en: '[1 Stroke – Option 3] Drop within 2 club-lengths within the bunker, not nearer the hole' },
-      { zh: '【罰 2 桿 選項四】在沙坑外後方延伸線上任意點丟球——多罰 1 桿換取出沙坑',
+      { zh: '【罰 2 桿 選項四】在沙坑外後方延伸線上任意點拋球——多罰 1 桿換取出沙坑',
         en: '[2 Strokes – Option 4] Drop outside the bunker on the back-on-the-line reference' },
     ],
-    warning: { zh: '大雨後沙坑若有積水，可先確認是否符合異常地面狀況（ACC）條件，有機會取得免罰脫困（但丟球仍需留在沙坑內）。',
+    warning: { zh: '大雨後沙坑若有積水，可先確認是否符合異常地面狀況（ACC）條件，有機會取得免罰脫困（但拋球仍需留在沙坑內）。',
                en: 'After heavy rain, check if standing water in the bunker qualifies as an Abnormal Course Condition (ACC). Free relief may be available, but the drop must remain in the bunker.' },
   },
 
@@ -948,9 +948,9 @@ const TREE = {
     type: 'question',
     title: { zh: '選擇分類', en: 'Select Category' },
     options: [
-      { id:'defs_area',   label:{zh:'🗺️ 區域 / 地形', en:'Areas & Course Zones'},  desc:{zh:'OB、懲罰區、GUR 等地形名詞',     en:'OB, Penalty Areas, GUR'},          icon:'🗺️' },
+      { id:'defs_area',   label:{zh:'🗺️ 區域 / 地形', en:'Areas & Course Zones'},  desc:{zh:'OB、處罰區、GUR 等地形名詞',     en:'OB, Penalty Areas, GUR'},          icon:'🗺️' },
       { id:'defs_ball',   label:{zh:'⚽ 球的狀態',     en:'Ball Status'},           desc:{zh:'比賽球、暫定球、替換球等',       en:'Ball in play, provisional, substituted'}, icon:'🏌️' },
-      { id:'defs_relief', label:{zh:'🔧 脫困術語',     en:'Relief Terms'},          desc:{zh:'脫困點、丟球、罰則等程序名詞',   en:'Nearest point, drop, stroke and distance'}, icon:'🔧' },
+      { id:'defs_relief', label:{zh:'🔧 脫困術語',     en:'Relief Terms'},          desc:{zh:'脫困點、拋球、罰則等程序名詞',   en:'Nearest point, drop, stroke and distance'}, icon:'🔧' },
       { id:'defs_action', label:{zh:'📋 動作 / 程序',  en:'Actions & Procedures'},  desc:{zh:'擊球、宣告、標記球位等',         en:'Stroke, announcement, marking'},   icon:'📋' },
     ]
   },
@@ -960,7 +960,7 @@ const TREE = {
     title: { zh: '區域 / 地形', en: 'Areas & Course Zones' },
     options: [
       { id:'def_ob',           label:{zh:'出界（Out of Bounds）',      en:'Out of Bounds'},            desc:{zh:'Rule 18.2',  en:'Rule 18.2'},  icon:'🚫' },
-      { id:'def_penarea',      label:{zh:'懲罰區（Penalty Area）',     en:'Penalty Area'},             desc:{zh:'Rule 17',    en:'Rule 17'},    icon:'💧' },
+      { id:'def_penarea',      label:{zh:'處罰區（Penalty Area）',     en:'Penalty Area'},             desc:{zh:'Rule 17',    en:'Rule 17'},    icon:'💧' },
       { id:'def_gur',          label:{zh:'修繕地區（GUR）',            en:'Ground Under Repair'},      desc:{zh:'Rule 16.1',  en:'Rule 16.1'}, icon:'🔵' },
       { id:'def_acc',          label:{zh:'異常地面狀況（ACC）',        en:'Abnormal Course Condition'},desc:{zh:'Rule 16',    en:'Rule 16'},    icon:'🌊' },
       { id:'def_obstruction',  label:{zh:'障礙物（Obstruction）',      en:'Obstruction'},              desc:{zh:'Rule 15',    en:'Rule 15'},    icon:'🚧' },
@@ -990,8 +990,8 @@ const TREE = {
       { id:'def_1club',     label:{zh:'一桿距離',               en:'One Club-Length'},               desc:{zh:'量測方式',  en:'How to measure'},icon:'📏' },
       { id:'def_2club',     label:{zh:'兩桿距離',               en:'Two Club-Lengths'},              desc:{zh:'量測方式',  en:'How to measure'},icon:'📐' },
       { id:'def_backline',  label:{zh:'後方延伸線',             en:'Back-on-the-Line Relief'},        desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'↩️' },
-      { id:'def_drop',      label:{zh:'丟球（Drop）',           en:'Drop'},                          desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'⬇️' },
-      { id:'def_place',     label:{zh:'放球（Place）',          en:'Place'},                         desc:{zh:'Rule 14.2', en:'Rule 14.2'},icon:'🤲' },
+      { id:'def_drop',      label:{zh:'拋球（Drop）',           en:'Drop'},                          desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'⬇️' },
+      { id:'def_place',     label:{zh:'置球（Place）',          en:'Place'},                         desc:{zh:'Rule 14.2', en:'Rule 14.2'},icon:'🤲' },
       { id:'def_sad',       label:{zh:'一桿距離罰則',           en:'Stroke and Distance'},           desc:{zh:'Rule 14.6', en:'Rule 14.6'},icon:'↩️' },
       { id:'def_free',      label:{zh:'免罰脫困（Free Relief）',en:'Free Relief'},                   desc:{zh:'Rule 14.3', en:'Rule 14.3'},icon:'✅' },
     ]
@@ -1024,14 +1024,14 @@ const TREE = {
 
   def_penarea: {
     type: 'definition', ruleNo: 'Rule 17',
-    title: { zh: '懲罰區（Penalty Area）', en: 'Penalty Area' },
-    definition: { zh: '以紅色或黃色樁/線標示的水域或特定地形。球進入後可選擇罰 1 桿脫困，也可以直接在懲罰區內打球（無罰桿）。', en: 'Water or specific terrain marked by red or yellow stakes/lines. A ball entering may be played as it lies (no penalty) or taken under 1-stroke penalty relief.' },
+    title: { zh: '處罰區（Penalty Area）', en: 'Penalty Area' },
+    definition: { zh: '以紅色或黃色樁/線標示的水域或特定地形。球進入後可選擇罰 1 桿脫困，也可以直接在處罰區內打球（無罰桿）。', en: 'Water or specific terrain marked by red or yellow stakes/lines. A ball entering may be played as it lies (no penalty) or taken under 1-stroke penalty relief.' },
     details: [
-      { zh: '紅樁（側邊懲罰區）：3 種脫困選項，包含側邊兩桿距離丟球', en: 'Red stakes (Lateral Penalty Area): 3 relief options, including the lateral 2-club-length drop' },
-      { zh: '黃樁（一般懲罰區）：2 種選項，無側邊丟球選項', en: 'Yellow stakes (General Penalty Area): 2 relief options only — no lateral drop available' },
-      { zh: '球在懲罰區內若能找到且能打，可直接擊球——無罰桿', en: 'If the ball is found and playable within the penalty area, it may be played as it lies — no penalty' },
+      { zh: '紅樁（紅色處罰區）：3 種脫困選項，包含側邊兩桿距離拋球', en: 'Red stakes (Lateral Penalty Area): 3 relief options, including the lateral 2-club-length drop' },
+      { zh: '黃樁（黃色處罰區）：2 種選項，無側邊拋球選項', en: 'Yellow stakes (General Penalty Area): 2 relief options only — no lateral drop available' },
+      { zh: '球在處罰區內若能找到且能打，可直接擊球——無罰桿', en: 'If the ball is found and playable within the penalty area, it may be played as it lies — no penalty' },
     ],
-    misconception: { zh: '以為球進水就一定要脫困——若球在懲罰區內可以找到且能打，完全可以下去打，無罰桿。', en: 'You are NOT required to take relief just because the ball entered water. If the ball is found and playable, play it as it lies — no penalty.' },
+    misconception: { zh: '以為球進水就一定要脫困——若球在處罰區內可以找到且能打，完全可以下去打，無罰桿。', en: 'You are NOT required to take relief just because the ball entered water. If the ball is found and playable, play it as it lies — no penalty.' },
   },
 
   def_gur: {
@@ -1051,9 +1051,9 @@ const TREE = {
     title: { zh: '異常地面狀況（ACC）', en: 'Abnormal Course Condition' },
     definition: { zh: '四種情況的統稱：①動物洞穴/糞便/足跡、②修繕地區（GUR）、③積水（Temporary Water）、④可移動式障礙物（需聲明）。均可取得免罰脫困。', en: 'A collective term for four conditions: animal holes/droppings/tracks, Ground Under Repair (GUR), Temporary Water, and immovable obstructions. Free relief is available for all.' },
     details: [
-      { zh: '積水：下雨或灌溉後地面上可見的臨時積水，不含懲罰區內', en: 'Temporary water: casual water visible on the surface after rain or irrigation — does not include penalty areas' },
+      { zh: '積水：下雨或灌溉後地面上可見的臨時積水，不含處罰區內', en: 'Temporary water: casual water visible on the surface after rain or irrigation — does not include penalty areas' },
       { zh: '動物洞穴：動物挖掘的洞、爪印等——鳥類足跡除外', en: 'Animal holes: holes, footprints, or scrapes made by animals — excludes bird footprints' },
-      { zh: '脫困程序統一：找最近完全脫困點（NPCR），在一桿距離內丟球', en: 'Uniform relief procedure: find the Nearest Point of Complete Relief (NPCR), drop within 1 club-length' },
+      { zh: '脫困程序統一：找最近完全脫困點（NPCR），在一桿距離內拋球', en: 'Uniform relief procedure: find the Nearest Point of Complete Relief (NPCR), drop within 1 club-length' },
       { zh: '沙坑積水屬於 ACC，但免罰脫困須留在沙坑內', en: 'Standing water in a bunker is ACC, but free relief drop must remain within the bunker' },
     ],
     misconception: { zh: '鞋印（非動物）不屬於 ACC，不能據此取得脫困。積水脫困不能跑到沙坑外（除非整個沙坑都積水，此時可罰 1 桿出沙坑）。', en: 'Human footprints (not animal) do NOT qualify as ACC. Temporary water relief inside a bunker does not allow dropping outside (unless the entire bunker is flooded — then 1-stroke penalty applies).' },
@@ -1087,7 +1087,7 @@ const TREE = {
   def_general_area: {
     type: 'definition', ruleNo: '定義',
     title: { zh: '一般區域（General Area）', en: 'General Area' },
-    definition: { zh: '球場上除發球台、果嶺、沙坑、懲罰區以外的所有地方，包含球道、長草區、樹林、車道等。', en: 'All parts of the course except the teeing area, putting green, bunkers, and penalty areas. Includes the fairway, rough, trees, and cart paths.' },
+    definition: { zh: '球場上除發球台、果嶺、沙坑、處罰區以外的所有地方，包含球道、長草區、樹林、車道等。', en: 'All parts of the course except the teeing area, putting green, bunkers, and penalty areas. Includes the fairway, rough, trees, and cart paths.' },
     details: [
       { zh: '球道只是一般區域中修剪較短的草區，並非獨立的規則分類', en: 'The fairway is simply the closely mown portion of the general area — it has no special rules status of its own' },
       { zh: '2019 年改版前稱為「Through the Green」，現已改為「General Area」', en: 'Previously called "Through the Green" before the 2019 Rules revision' },
@@ -1180,7 +1180,7 @@ const TREE = {
     details: [
       { zh: '「完全脫困」意指站姿和揮桿路徑都不受干擾，不只是球的位置', en: '"Complete relief" means both stance AND the area of intended swing are clear — not just the ball position' },
       { zh: '脫困點可能在長草或不利位置，球員無權選擇「更好的位置」', en: 'The NPCR may be in thick rough or an otherwise unfavorable position — the player has no right to choose a better spot' },
-      { zh: '找到 NPCR 後，在 NPCR 起一桿距離內丟球（同樣不更靠近球洞）', en: 'Once the NPCR is found, drop within 1 club-length of that point — also not nearer the hole' },
+      { zh: '找到 NPCR 後，在 NPCR 起一桿距離內拋球（同樣不更靠近球洞）', en: 'Once the NPCR is found, drop within 1 club-length of that point — also not nearer the hole' },
       { zh: '建議用球桿模擬站姿和揮桿動作，確認真正完全不受干擾的位置', en: 'Recommended: physically simulate your stance and swing with a club to confirm the point truly provides complete relief' },
     ],
     misconception: { zh: '很多球友以為免罰脫困可以選「最有利的位置」，但規則要求找最近的完全脫困點，就算那個點在長草也一樣。', en: 'Many players assume free relief means choosing the most ADVANTAGEOUS position. The Rules require the NEAREST point of complete relief — even if that point is in thick rough.' },
@@ -1189,10 +1189,10 @@ const TREE = {
   def_1club: {
     type: 'definition', ruleNo: 'Rule 14.3',
     title: { zh: '一桿距離（One Club-Length）', en: 'One Club-Length' },
-    definition: { zh: '以球員球包內最長的球桿（通常是球道木）量測的距離，作為丟球區域的範圍。以脫困點為圓心，最長球桿為半徑的圓形範圍。', en: 'The length of the longest club in the player\'s bag (usually a fairway wood), used to define the permitted drop zone — a circle with the reference point as center.' },
+    definition: { zh: '以球員球包內最長的球桿（通常是球道木）量測的距離，作為拋球區域的範圍。以脫困點為圓心，最長球桿為半徑的圓形範圍。', en: 'The length of the longest club in the player\'s bag (usually a fairway wood), used to define the permitted drop zone — a circle with the reference point as center.' },
     details: [
       { zh: '用包包裡最長的球桿量，量完後可換任何球桿打', en: 'Use the longest club in the bag to measure; any club may be used to play the shot afterward' },
-      { zh: '丟球後，球必須靜止在此圓形範圍內，且不更靠近球洞', en: 'After dropping, the ball must come to rest within the circle and must not be nearer the hole' },
+      { zh: '拋球後，球必須靜止在此圓形範圍內，且不更靠近球洞', en: 'After dropping, the ball must come to rest within the circle and must not be nearer the hole' },
       { zh: '若球滾出範圍，需重丟（最多兩次機會）', en: 'If the ball rolls outside the circle, re-drop — up to two attempts' },
     ],
     misconception: { zh: '以為要用推桿量，或以為一桿距離是固定的長度。應用包包裡最長的球桿，每個人不一樣長。', en: 'Many players assume one club-length means a putter length, or think it is a fixed standard distance. Use the longest club in your bag — this varies from player to player.' },
@@ -1204,7 +1204,7 @@ const TREE = {
     definition: { zh: '以最長球桿量取兩倍的距離，適用於紅樁側邊脫困、Unplayable 的兩桿距離選項等情況。', en: 'Twice the length of the longest club in the bag. Used for lateral relief from red-stake penalty areas and the 2-club-length unplayable option.' },
     details: [
       { zh: '同樣以包包裡最長的球桿為準，量兩次', en: 'Use the longest club in the bag, measured twice' },
-      { zh: '適用情況：紅樁懲罰區側邊丟球、無法打擊（Unplayable）的兩桿距離選項', en: 'Applicable situations: lateral drop from a red-stake penalty area; 2-club-length unplayable relief option' },
+      { zh: '適用情況：紅樁處罰區側邊拋球、無法打擊（Unplayable）的兩桿距離選項', en: 'Applicable situations: lateral drop from a red-stake penalty area; 2-club-length unplayable relief option' },
       { zh: '同樣不可更靠近球洞，球靜止後需在圓形範圍內', en: 'Same rules apply: ball must not be nearer the hole and must come to rest within the drop zone' },
     ],
     misconception: { zh: '兩桿距離同樣不可更靠近球洞，這一點和一桿距離相同，很多球友容易忽略。', en: 'Even with two club-lengths, the ball must NOT be nearer the hole — identical to the one club-length rule, yet often overlooked.' },
@@ -1213,40 +1213,40 @@ const TREE = {
   def_backline: {
     type: 'definition', ruleNo: 'Rule 14.3',
     title: { zh: '後方延伸線（Back-on-the-Line）', en: 'Back-on-the-Line Relief' },
-    definition: { zh: '以球洞和基準點（如球入水點）連線，向基準點後方無限延伸的一條線。可在線上任意一點丟球，無距離限制。', en: 'A line extending backward from the hole through a reference point (e.g., where the ball last crossed a penalty area margin). The player may drop anywhere on this line — no distance limit.' },
+    definition: { zh: '以球洞和基準點（如球入水點）連線，向基準點後方無限延伸的一條線。可在線上任意一點拋球，無距離限制。', en: 'A line extending backward from the hole through a reference point (e.g., where the ball last crossed a penalty area margin). The player may drop anywhere on this line — no distance limit.' },
     details: [
       { zh: '只能在那條線上丟，不是「線的附近」', en: 'The ball must be dropped ON the line itself — not just near the line' },
-      { zh: '丟球後球可以滾動，滾動範圍在一桿距離內且不更靠近球洞即可', en: 'After dropping, the ball may roll within 1 club-length of the landing spot and must not be nearer the hole' },
+      { zh: '拋球後球可以滾動，滾動範圍在一桿距離內且不更靠近球洞即可', en: 'After dropping, the ball may roll within 1 club-length of the landing spot and must not be nearer the hole' },
       { zh: '適用情況：黃樁水域、紅樁水域（選項之一）、沙坑 Unplayable（需留沙坑內）', en: 'Applicable situations: yellow-stake penalty area; red-stake penalty area (one option); bunker unplayable (must remain in bunker)' },
-      { zh: '理論上可以退到幾百碼後再丟球（無距離限制）', en: 'Theoretically, the player may drop hundreds of yards back — there is no distance limit on this line' },
+      { zh: '理論上可以退到幾百碼後再拋球（無距離限制）', en: 'Theoretically, the player may drop hundreds of yards back — there is no distance limit on this line' },
     ],
-    misconception: { zh: '可以在線的「附近」任意找好位置丟球——不行，必須精確在那條延伸線上。若丟偏了，從錯誤位置打，可能被罰桿。', en: 'Players often drop near the line rather than precisely on it — this is incorrect. The ball must be dropped on the back-on-the-line reference itself. An imprecise drop may result in a penalty.' },
+    misconception: { zh: '可以在線的「附近」任意找好位置拋球——不行，必須精確在那條延伸線上。若丟偏了，從錯誤位置打，可能被罰桿。', en: 'Players often drop near the line rather than precisely on it — this is incorrect. The ball must be dropped on the back-on-the-line reference itself. An imprecise drop may result in a penalty.' },
   },
 
   def_drop: {
     type: 'definition', ruleNo: 'Rule 14.3',
-    title: { zh: '丟球（Drop）', en: 'Drop' },
+    title: { zh: '拋球（Drop）', en: 'Drop' },
     definition: { zh: '脫困時將球從膝蓋高度放落的程序（2019 版現行規則）。球員需站在脫困區域內或外，使球自然落下並靜止在脫困區域內。', en: 'The procedure of releasing a ball from knee height to take relief (current 2019 Rules). The ball must fall and come to rest within the designated relief area.' },
     details: [
       { zh: '2019 年前舊規是從肩膀高度丟，現在改為膝蓋高度', en: 'Pre-2019 rule: drop from shoulder height; current rule: drop from knee height' },
       { zh: '球必須在脫困區域內靜止，否則需重丟（最多兩次）', en: 'Ball must come to rest within the relief area; if it rolls outside, re-drop — maximum two attempts' },
-      { zh: '第一次滾出去 → 重丟；第二次還滾出去 → 改在第二次球靜止處「放球」', en: 'First drop rolls outside → re-drop; second drop still rolls outside → place the ball where the second drop first landed' },
-      { zh: '丟球時球不能碰到球員身體（包括腳），否則需重丟（無罰桿）', en: 'The ball must not touch the player\'s body (including feet) during the drop; if it does, re-drop — no penalty' },
+      { zh: '第一次滾出去 → 重丟；第二次還滾出去 → 改在第二次球靜止處「置球」', en: 'First drop rolls outside → re-drop; second drop still rolls outside → place the ball where the second drop first landed' },
+      { zh: '拋球時球不能碰到球員身體（包括腳），否則需重丟（無罰桿）', en: 'The ball must not touch the player\'s body (including feet) during the drop; if it does, re-drop — no penalty' },
     ],
-    misconception: { zh: '還在用肩膀高度丟球的資深球友注意：2019 年規則已改為膝蓋高度，這是目前的正確做法。', en: 'Experienced players who learned under the old rules may still drop from shoulder height — this is incorrect. The current rule is knee height, one of the most common outdated habits seen on courses.' },
+    misconception: { zh: '還在用肩膀高度拋球的資深球友注意：2019 年規則已改為膝蓋高度，這是目前的正確做法。', en: 'Experienced players who learned under the old rules may still drop from shoulder height — this is incorrect. The current rule is knee height, one of the most common outdated habits seen on courses.' },
   },
 
   def_place: {
     type: 'definition', ruleNo: 'Rule 14.2',
-    title: { zh: '放球（Place）', en: 'Place' },
-    definition: { zh: '將球直接放到指定位置的程序，與「丟球」不同，不需從高處落下，手動設置在指定點。', en: 'Setting the ball down at a specific point by hand, as opposed to dropping. No release from height required — the ball is placed directly at the designated spot.' },
+    title: { zh: '置球（Place）', en: 'Place' },
+    definition: { zh: '將球直接放到指定位置的程序，與「拋球」不同，不需從高處落下，手動設置在指定點。', en: 'Setting the ball down at a specific point by hand, as opposed to dropping. No release from height required — the ball is placed directly at the designated spot.' },
     details: [
       { zh: '使用時機一：果嶺上提球後放回原位', en: 'Usage 1: lifting and replacing a ball on the putting green' },
-      { zh: '使用時機二：丟球兩次後球仍滾出脫困區，改在第二次球靜止處放球', en: 'Usage 2: if a dropped ball rolls outside the relief area twice, place it where the second drop first landed' },
+      { zh: '使用時機二：拋球兩次後球仍滾出脫困區，改在第二次球靜止處置球', en: 'Usage 2: if a dropped ball rolls outside the relief area twice, place it where the second drop first landed' },
       { zh: '使用時機三：球被移動後需還原位置', en: 'Usage 3: restoring a ball that was accidentally moved' },
-      { zh: '放球後若球無法靜止（坡度太大）：選附近最近能靜止的點放球', en: 'If the ball will not stay at the placement spot (too steep a slope), find the nearest spot where it will remain stationary' },
+      { zh: '置球後若球無法靜止（坡度太大）：選附近最近能靜止的點置球', en: 'If the ball will not stay at the placement spot (too steep a slope), find the nearest spot where it will remain stationary' },
     ],
-    misconception: { zh: '果嶺外的脫困都是「丟球」而非放球，除非丟了兩次都滾出去，才改用放球。很多球友在果嶺外也用放球，這是不正確的程序。', en: 'Off the putting green, relief always uses a DROP — not a place — unless two drops both roll outside the relief area. Many players incorrectly place the ball when they should be dropping.' },
+    misconception: { zh: '果嶺外的脫困都是「拋球」而非置球，除非丟了兩次都滾出去，才改用置球。很多球友在果嶺外也用置球，這是不正確的程序。', en: 'Off the putting green, relief always uses a DROP — not a place — unless two drops both roll outside the relief area. Many players incorrectly place the ball when they should be dropping.' },
   },
 
   def_sad: {
@@ -1256,10 +1256,10 @@ const TREE = {
     details: [
       { zh: '「Stroke」= 罰的 1 桿；「Distance」= 你走回去重打的路程距離', en: '"Stroke" = the 1-stroke penalty added; "Distance" = the distance traveled back to the original spot' },
       { zh: 'OB、找不到球：強制使用（無其他選項，除非球場有適用 Local Rule E-5）', en: 'OB and lost balls: stroke and distance is mandatory — no other option, unless Local Rule E-5 applies at that course' },
-      { zh: '懲罰區、Unplayable：一桿距離罰則是選項之一，但通常有更省桿的選擇', en: 'Penalty areas and unplayable lies: stroke and distance is one option among others — usually not the most efficient choice' },
-      { zh: '回到原位時若位置不確定，在最接近原始擊球點的合理位置一桿距離內丟球', en: 'If the exact original spot is uncertain, drop within 1 club-length of the nearest reasonable estimate of that point' },
+      { zh: '處罰區、Unplayable：一桿距離罰則是選項之一，但通常有更省桿的選擇', en: 'Penalty areas and unplayable lies: stroke and distance is one option among others — usually not the most efficient choice' },
+      { zh: '回到原位時若位置不確定，在最接近原始擊球點的合理位置一桿距離內拋球', en: 'If the exact original spot is uncertain, drop within 1 club-length of the nearest reasonable estimate of that point' },
     ],
-    misconception: { zh: '很多球友聽說 Local Rule E-5 後，以為出界都可以在球道丟球。E-5 並非所有球場都有適用，使用前必須確認當天的當地規則。', en: 'Many players have heard of Local Rule E-5 and assume OB always allows a fairway drop. E-5 is NOT available at all courses — always confirm the local rules before using it.' },
+    misconception: { zh: '很多球友聽說 Local Rule E-5 後，以為出界都可以在球道拋球。E-5 並非所有球場都有適用，使用前必須確認當天的當地規則。', en: 'Many players have heard of Local Rule E-5 and assume OB always allows a fairway drop. E-5 is NOT available at all courses — always confirm the local rules before using it.' },
   },
 
   def_free: {
@@ -1267,7 +1267,7 @@ const TREE = {
     title: { zh: '免罰脫困（Free Relief）', en: 'Free Relief' },
     definition: { zh: '不需加計罰桿的脫困，適用於異常地面狀況（積水、GUR、動物洞）和不可移動障礙物干擾等情況。', en: 'Relief taken without adding a penalty stroke, available for Abnormal Course Conditions (temporary water, GUR, animal holes) and immovable obstruction interference.' },
     details: [
-      { zh: '免費不代表沒有限制——必須嚴格按照找 NPCR、在一桿距離內丟球的程序操作', en: 'Free does not mean unrestricted — the NPCR procedure must be followed strictly: find the nearest point of complete relief, drop within 1 club-length' },
+      { zh: '免費不代表沒有限制——必須嚴格按照找 NPCR、在一桿距離內拋球的程序操作', en: 'Free does not mean unrestricted — the NPCR procedure must be followed strictly: find the nearest point of complete relief, drop within 1 club-length' },
       { zh: '常見免罰脫困：不可移動障礙物（實體干擾）、GUR、積水、動物洞穴、錯誤果嶺', en: 'Common free relief situations: immovable obstructions (physical interference), GUR, temporary water, animal holes, wrong green' },
       { zh: '程序錯誤（例如丟到更靠近球洞的地方）可能被罰桿', en: 'Procedural errors (e.g., dropping nearer the hole than permitted) can result in a penalty stroke' },
     ],
@@ -1296,7 +1296,7 @@ const TREE = {
     details: [
       { zh: '現行規則：定址後若球自然移動（風吹、坡度），無罰桿，從新位置打', en: 'Current rule: if the ball moves naturally after address (wind, slope), no penalty — play from the new position' },
       { zh: '若判定是球員的動作導致球移動（如碰到球），罰 1 桿，球放回原位', en: 'If the player\'s actions caused the ball to move (e.g., accidentally touched), 1-stroke penalty and replace the ball' },
-      { zh: '沙坑和懲罰區內：擊球前不可將球桿觸碰地面（測試地面，罰桿）', en: 'In bunkers and penalty areas: do not touch the ground with the club before a stroke — testing the ground is penalized' },
+      { zh: '沙坑和處罰區內：擊球前不可將球桿觸碰地面（測試地面，罰桿）', en: 'In bunkers and penalty areas: do not touch the ground with the club before a stroke — testing the ground is penalized' },
     ],
     misconception: { zh: '舊規球員注意：2019 年以前，定址後球若移動自動罰桿。現行規則已取消此規定，自然移動無罰桿。很多資深球友仍沿用舊觀念。', en: 'Players who learned before 2019: the old rule automatically penalized a ball moving after address. The current Rules removed this — natural movement after address carries no penalty. This is one of the most significant 2019 changes.' },
   },
@@ -1322,7 +1322,7 @@ const TREE = {
       { zh: '球位標放在球的「後方」（更遠離球洞的那一側），不可放在前方', en: 'Place the marker BEHIND the ball (on the side away from the hole) — not in front or to the side' },
       { zh: '果嶺上提球前必須標記，否則罰 1 桿', en: 'On the putting green, the ball must be marked before lifting; failure to do so results in a 1-stroke penalty' },
       { zh: '若標記影響他人推桿路線，可要求移動標記（往旁邊一桿距離）', en: 'If the marker interferes with another player\'s putting line, it may be moved sideways by one club-length' },
-      { zh: '移動後的標記，放球前需移回原位，忘了移回罰 1 桿', en: 'After moving the marker, it must be returned to its original position before replacing the ball — forgetting results in a 1-stroke penalty' },
+      { zh: '移動後的標記，置球前需移回原位，忘了移回罰 1 桿', en: 'After moving the marker, it must be returned to its original position before replacing the ball — forgetting results in a 1-stroke penalty' },
     ],
     misconception: { zh: '球位標放在球的「旁邊」就好——不行，規則要求放在球的後方（更遠離球洞的那側），這樣放回球時位置才準確。', en: 'Placing the marker beside the ball rather than behind it is incorrect. The Rules require the marker to be placed behind the ball (the side farther from the hole), ensuring accurate replacement.' },
   },
