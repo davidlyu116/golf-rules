@@ -1,4 +1,4 @@
-const CACHE_NAME = 'golf-rules-v2';
+const CACHE_NAME = 'golf-rules-v3';
 const ASSETS = [
   '/golf-rules/',
   '/golf-rules/index.html',
