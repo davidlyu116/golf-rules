@@ -1,4 +1,4 @@
-const CACHE_NAME = 'golf-rules-v3';
+const CACHE_NAME = 'golf-rules-v4';
 const ASSETS = [
   '/golf-rules/',
   '/golf-rules/index.html',
@@ -23,17 +23,18 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Cache-first：優先用快取，無網路也能正常運作
+// Network-first：優先抓新版，無網路才 fallback 快取
 self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(res => {
+    fetch(e.request)
+      .then(res => {
         if (!res || res.status !== 200 || res.type === 'opaque') return res;
         const clone = res.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
         return res;
-      });
-    }).catch(() => caches.match('/golf-rules/index.html'))
+      })
+      .catch(() =>
+        caches.match(e.request).then(cached => cached || caches.match('/golf-rules/index.html'))
+      )
   );
 });
