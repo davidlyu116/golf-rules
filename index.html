@@ -318,6 +318,14 @@ const TREE = {
         label: { zh:'打到別人的球',           en:'Played a Wrong Ball' },
         desc:  { zh:'不小心用別人的球擊打',   en:'Accidentally struck another player\'s ball' },
         icon:'⚠️' },
+      { id:'tee_area',
+        label: { zh:'發球台相關',             en:'Teeing Area' },
+        desc:  { zh:'球掉落、界線外打出等發球台情況', en:'Ball off tee, outside teeing area, etc.' },
+        icon:'🏌️' },
+      { id:'embedded',
+        label: { zh:'球嵌入地面',             en:'Embedded Ball' },
+        desc:  { zh:'嵌入球道或沙坑的處理方式', en:'Ball embedded in ground or bunker' },
+        icon:'🌱' },
       { id:'defs',
         label: { zh:'📖 名詞解釋',                    en:'📖 Glossary' },
         desc:  { zh:'高爾夫規則常用名詞，輕鬆增進知識', en:'Golf rules terminology reference' },
@@ -784,6 +792,157 @@ const TREE = {
                en:'Always verify ball markings before playing – brand, number, and personal identification marks. Consider adding a unique mark to your ball before each hole.' },
   },
 
+  // ── 發球台 ───────────────────────────────────
+  tee_area: {
+    type: 'question',
+    title: { zh: '發球台（Teeing Area）發生什麼狀況？', en: 'What happened at the Teeing Area?' },
+    options: [
+      { id:'tee_ball_fell',
+        label: { zh:'球從球座掉下來',         en:'Ball Fell Off the Tee' },
+        desc:  { zh:'還沒揮桿、或揮桿過程中掉落', en:'Before or during the swing' },
+        icon:'😬' },
+      { id:'tee_outside',
+        label: { zh:'從界線外打出',           en:'Played from Outside Teeing Area' },
+        desc:  { zh:'不小心從發球台範圍外打出', en:'Accidentally played from wrong position' },
+        icon:'⚠️' },
+      { id:'tee_boundaries',
+        label: { zh:'發球台界線在哪裡？',     en:'Where is the Teeing Area?' },
+        desc:  { zh:'確認哪裡算發球台區域',   en:'Confirm the exact boundaries' },
+        icon:'📐' },
+    ]
+  },
+
+  tee_ball_fell: {
+    type: 'result',
+    ruleNo: 'Rule 6.2b(5)',
+    title:   { zh: '球從球座掉下來', en: 'Ball Fell Off the Tee' },
+    penalty: { zh: '通常無罰桿',     en: 'Usually No Penalty' },
+    penaltyFree: true,
+    summary: { zh: '球在被擊打之前掉落，無罰桿，可以重新放上球座。關鍵判斷：是否已完成「有意圖的揮桿」。',
+               en: 'If the ball falls off the tee before being struck, there is no penalty and it may be re-teed. The key question is whether an intentional stroke was made.' },
+    strokeCalc: {
+      title: { zh: '各種情況怎麼算？', en: 'How to count in each scenario?' },
+      rows: [
+        { label: { zh: '準備時 / 定址時掉落',      en: 'Falls during address / setup' },          val: { zh: '無罰桿，重新放', en: 'No penalty, re-tee' } },
+        { label: { zh: '練習揮桿時掉落',            en: 'Falls during practice swing' },           val: { zh: '無罰桿，重新放', en: 'No penalty, re-tee' } },
+        { label: { zh: '下桿中途停下（未打到球）',  en: 'Downswing stopped before contact' },      val: { zh: '無罰桿，重新放', en: 'No penalty, re-tee' } },
+        { label: { zh: '完整揮桿打空（Whiff）',     en: 'Complete swing, missed (Whiff)' },        val: { zh: '罰 1 桿，可重新放球座', en: '1-stroke penalty, may re-tee' } },
+      ]
+    },
+    steps: [
+      { zh: '未完成揮桿（或練習揮桿）時球掉落 → 直接重新放球座，無罰桿',
+        en: 'Ball falls before completing a stroke (or during practice swing) → re-tee, no penalty' },
+      { zh: '完成揮桿但打空（Whiff）→ 計 1 桿，球仍在發球台區域，可重新放球座打第 2 桿',
+        en: 'Complete swing but missed (Whiff) → 1 stroke counted; ball is in the teeing area and may be re-teed' },
+    ],
+    warning: { zh: '空揮（有意圖揮桿但沒打到球）一定算 1 桿，但因球仍在發球台區域內，可以重新放球座。這和球場外的空揮處理不同。',
+               en: 'A whiff always counts as 1 stroke. However, since the ball remains in the teeing area, it may be re-teed for the next stroke. This is different from a whiff elsewhere on the course.' },
+  },
+
+  tee_outside: {
+    type: 'result',
+    ruleNo: 'Rule 6.1b',
+    title:   { zh: '從界線外打出', en: 'Played from Outside Teeing Area' },
+    penalty: { zh: '比桿賽罰 2 桿，需重打', en: 'Stroke Play: 2-Stroke Penalty, Must Replay' },
+    penaltyFree: false,
+    summary: { zh: '從發球台界線外打出，比桿賽罰 2 桿且那一桿不計，必須從界線內重打。比洞賽無罰桿，但對手可要求取消。',
+               en: 'Playing from outside the teeing area: stroke play incurs a 2-stroke penalty and the stroke doesn\'t count. Match play has no penalty, but opponent may require cancellation.' },
+    steps: [
+      { zh: '【比桿賽】打出的那一桿不計，罰 2 桿，從發球台界線內重打',
+        en: '[Stroke Play] The stroke does not count; add 2 penalty strokes; replay from within the teeing area' },
+      { zh: '【比洞賽】無罰桿，但對手可在你打下一桿之前要求取消，從界線內重打',
+        en: '[Match Play] No penalty, but opponent may require you to cancel the stroke and replay from correct position before next stroke' },
+      { zh: '若已打完整洞才發現 → 比桿賽取消成績（DQ）',
+        en: 'If not corrected before completing the hole → Disqualification (DQ) in stroke play' },
+    ],
+    warning: { zh: '比桿賽中一旦打下一桿，就不能再糾正從界線外打出的違規，必須立刻處理。',
+               en: 'In stroke play, once the next stroke is made, the mistake cannot be corrected. The error must be addressed immediately.' },
+  },
+
+  tee_boundaries: {
+    type: 'result',
+    ruleNo: 'Rule 6.2b',
+    title:   { zh: '發球台界線說明', en: 'Teeing Area Boundaries' },
+    penalty: { zh: '無（僅供參考）', en: 'N/A – Reference Only' },
+    penaltyFree: true,
+    summary: { zh: '發球台（Teeing Area）是一個矩形範圍：前方以兩個發球台標記連線為界，往後延伸兩桿距離的深度。',
+               en: 'The teeing area is a rectangle: front boundary is the line between the two tee markers; depth is 2 club-lengths behind that line.' },
+    steps: [
+      { zh: '寬度：以兩個發球台標記外緣為左右界',
+        en: 'Width: between the outer edges of the two tee markers' },
+      { zh: '深度：從兩個標記連線往後延伸兩桿距離',
+        en: 'Depth: 2 club-lengths behind the line connecting the two markers' },
+      { zh: '球必須在矩形範圍內（至少球的任何部分接觸範圍即可）',
+        en: 'The ball must be within the rectangle (at least any part of the ball touching the area)' },
+      { zh: '球員可以站在界線外揮桿，只要球在界線內即可',
+        en: 'The player may stand outside the teeing area; only the ball must be inside' },
+      { zh: '球可以直接放在地面打，不一定需要球座；球座高度無限制',
+        en: 'No tee-peg is required; the ball may be played off the ground; tee height is unrestricted' },
+    ],
+    warning: { zh: '很多球友以為不能站在標記「前方」，其實可以——限制的是「球的位置」，不是站立位置。',
+               en: 'Many players think they cannot stand forward of the tee markers. They can. Only the ball\'s position is restricted, not the player\'s stance.' },
+  },
+
+  // ── 嵌入球 ───────────────────────────────────
+  embedded: {
+    type: 'question',
+    title: { zh: '球嵌入的位置？', en: 'Where is the Ball Embedded?' },
+    options: [
+      { id:'embedded_general',
+        label: { zh:'一般區域（球道、長草等）', en:'General Area (Fairway, Rough, etc.)' },
+        desc:  { zh:'球嵌入軟地，形成自己的球痕坑', en:'Ball embedded in its own pitch-mark' },
+        icon:'🌱' },
+      { id:'embedded_bunker',
+        label: { zh:'沙坑內',                  en:'In a Bunker' },
+        desc:  { zh:'球嵌入沙坑的沙中',          en:'Ball buried deep in bunker sand' },
+        icon:'🏖️' },
+    ]
+  },
+
+  embedded_general: {
+    type: 'result',
+    ruleNo: 'Rule 16.3a',
+    title:   { zh: '嵌入球——一般區域', en: 'Embedded Ball – General Area' },
+    penalty: { zh: '免罰脫困',          en: 'Free Relief' },
+    penaltyFree: true,
+    summary: { zh: '球嵌入一般區域（球道、長草等軟地），可免罰脫困。球必須是嵌入「自己製造的球痕坑」中才符合資格。',
+               en: 'A ball embedded in the general area may be lifted and dropped without penalty. The ball must be embedded in its own pitch-mark to qualify.' },
+    steps: [
+      { zh: '確認球是嵌入「自己的球痕坑」中（非滾入凹洞或舊坑）',
+        en: 'Confirm the ball is in its own pitch-mark (not just resting in an old hole)' },
+      { zh: '脫困參考點：球嵌入處的「正後方」——沿球洞與嵌入球的連線往後（非側邊）',
+        en: 'Reference point: directly behind the embedded position – on the line from the hole through the ball (not to the side)' },
+      { zh: '在脫困參考點起一桿距離內丟球，不更靠近球洞',
+        en: 'Drop within 1 club-length of that reference point, not nearer the hole' },
+      { zh: '丟球落點必須在一般區域內（不可落在沙坑或懲罰區）',
+        en: 'Ball must come to rest in the general area (not in a bunker or penalty area)' },
+    ],
+    warning: { zh: '脫困參考點在球的「正後方」，不是旁邊——這是很多人搞錯的地方。沙坑內的嵌入球不適用本條免罰脫困。',
+               en: 'The reference point is directly BEHIND the ball, not to the side — a very common mistake. This free relief does not apply in bunkers.' },
+  },
+
+  embedded_bunker: {
+    type: 'result',
+    ruleNo: 'Rule 19.3',
+    title:   { zh: '嵌入球——沙坑', en: 'Embedded Ball – Bunker' },
+    penalty: { zh: '無免罰脫困，考慮 Unplayable', en: 'No Free Relief – Unplayable Options Available' },
+    penaltyFree: false,
+    summary: { zh: '沙坑內的嵌入球沒有免罰脫困選項，只能直接打或宣告 Unplayable（在沙坑內罰 1 桿，或出沙坑罰 2 桿）。',
+               en: 'No free relief is available for an embedded ball in a bunker. The player must play it as it lies or declare the ball unplayable.' },
+    steps: [
+      { zh: '【選項一】直接打——用大開口沙坑桿爆沙打出',
+        en: '[Option 1] Play it as it lies – explosion shot with a high-lofted wedge' },
+      { zh: '【罰 1 桿 選項二】沿球位與球洞連線往後，在沙坑內後方延伸線上丟球',
+        en: '[1 Stroke – Option 2] Drop on the back-on-the-line within the bunker' },
+      { zh: '【罰 1 桿 選項三】以球位為圓心，兩桿距離內在沙坑內丟球（不更靠近球洞）',
+        en: '[1 Stroke – Option 3] Drop within 2 club-lengths within the bunker, not nearer the hole' },
+      { zh: '【罰 2 桿 選項四】在沙坑外後方延伸線上任意點丟球——多罰 1 桿換取出沙坑',
+        en: '[2 Strokes – Option 4] Drop outside the bunker on the back-on-the-line reference' },
+    ],
+    warning: { zh: '大雨後沙坑若有積水，可先確認是否符合異常地面狀況（ACC）條件，有機會取得免罰脫困（但丟球仍需留在沙坑內）。',
+               en: 'After heavy rain, check if standing water in the bunker qualifies as an Abnormal Course Condition (ACC). Free relief may be available, but the drop must remain in the bunker.' },
+  },
+
   // ── 名詞解釋 ─────────────────────────────────
   defs: {
     type: 'question',
@@ -1243,7 +1402,7 @@ function render() {
       <div class="question-title">${t(node.title)}</div>
       <div class="options-grid">
         ${node.options.map((o, i) => `
-          ${cur.id === 'home' && i === 7 ? '<div style="margin:4px 0;border-top:1.5px dashed #c8e0c8;"></div>' : ''}
+          ${cur.id === 'home' && i === 9 ? '<div style="margin:4px 0;border-top:1.5px dashed #c8e0c8;"></div>' : ''}
           <div class="option-card" onclick="navigate('${o.id}')">
             <div class="opt-icon">${o.icon}</div>
             <div class="opt-text">
